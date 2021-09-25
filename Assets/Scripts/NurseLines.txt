@@ -1,0 +1,26 @@
+ENG:
+
+"Hello!"
+
+Random:
+"You seem to be having"
+"You are having"
+"I think you are having"
+
+"hallucination!"
+
+Random:
+"I will fix it!"
+"I know how to fix it!"
+"I think I know how to fix it!"
+
+Random:
+"All done!"
+"There you go!"
+"There! Have a great day!"
+
+RUS:
+
+SPAN:
+
+POL:

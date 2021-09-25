@@ -1,0 +1,653 @@
+using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using TMPro;
+
+public class GameManager : MonoBehaviour
+{
+    public bool spooky;
+    public bool gameOver;
+    public bool scrapJoining;
+    public bool allScrapsJoined;
+    public bool detention;
+    public bool learning;
+    public bool Event;
+    public bool waterEvent;
+    public bool fireEvent;
+    public bool secretEnding;
+    public float spookyTime;
+    public float detentionTime;
+    public float rapTime;
+    public float gameOverEnd;
+    public float timeToStartEvent;
+    public float timeToStopEvent;
+    public int scraps;
+    public int exitsReached;
+    public int[] items;
+    public int slotSelected;
+    public string[] itemNames;
+    public string dialoge_null;
+    public TextMeshProUGUI itemText;
+    public Image[] itemImages;
+    public Sprite[] itemTextures;
+    public GameObject[] selectArrows;
+    private AudioSource audioSource;
+    public AudioSource scareAudio;
+    public AudioSource preScareAudio;
+    public AudioSource finaleAudio;
+    public AudioClip MUS_default;
+    public AudioClip MUS_spooky;
+    public AudioClip ANGRY;
+    public AudioClip LIGHTS_TURN_OFF;
+    public AudioClip[] nineScraps;
+    public AudioClip exitReached;
+    public AudioClip LOUD;
+    public AudioClip[] deathClips;
+    private AudioClip currentDeathClip;
+    public Transform player;
+    [HideInInspector]
+    public Player playerScript;
+    [HideInInspector]
+    public CharacterController playerController;
+    public Subtitle finaleAudioSubtitles;
+    public GameObject flashlight;
+    public Door detentionDoor;
+    public Camera gameOverCamera;
+    public GameObject math;
+    public GameObject soda;
+    public GameObject entrances;
+    public GameObject enemyNPC;
+    public Maddie maddieScript;
+    public PRI priScript;
+    public Rap rapScript;
+    public Bully bullyScript;
+    public AudioSource printer;
+    public GameObject startBarriers;
+    public GameObject bus;
+    public Transform[] aiWanderPoints;
+    public Transform[] bullySpawnPoints;
+    private AudioSource rapMusic;
+    public AudioSource welcome;
+    public GameObject welcomeSubtitle;
+    public GameObject pauseMenu;
+    public TextMeshProUGUI restText;
+    public GameObject crosshair_hover;
+    public TextMeshProUGUI scrapCount;
+    public TextMeshProUGUI detentionText;
+    public TextMeshProUGUI rapText;
+    public MeshRenderer scaryWallRenderer;
+    public MeshCollider secretWall;
+    public Material scaryMat;
+    public PauseManager pm;
+    public Color scaryLight;
+    public Color finalFogColor;
+    public GameObject hud;
+    public GameObject water;
+    public GameObject scrapConnect;
+    public GameObject scrapFull;
+    public GameObject[] scrapButton;
+    public Slider mouseSensitivity;
+    public Toggle subtitleToggle;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        playerScript = player.gameObject.GetComponent<Player>();
+        playerController = player.gameObject.GetComponent<CharacterController>();
+        rapMusic = rapScript.gameObject.GetComponent<AudioSource>();
+        audioSource.clip = MUS_default;
+        audioSource.loop = true;
+        audioSource.volume = 0.5f;
+        audioSource.Play();
+        currentDeathClip = deathClips[Random.Range(0, deathClips.Length)];
+        mouseSensitivity.value = PlayerPrefs.GetFloat("mouseSensitivity");
+
+        if (currentDeathClip != deathClips[0])
+        {
+            gameOverEnd = currentDeathClip.length;
+        }
+
+        else
+        {
+            gameOverEnd = 1.967f;
+        }
+        
+        if (PlayerPrefs.GetInt("subtitle") == 1)
+        {
+            subtitleToggle.isOn = true;
+        }
+
+        else
+        {
+            subtitleToggle.isOn = false;
+        }
+
+        if (mouseSensitivity.value == 1f)
+        {
+            mouseSensitivity.value = 3f;
+        }
+
+        UpdateScapText();
+        UpdateInventoryData();
+    }
+
+    void Update()
+    {
+        PlayerPrefs.SetFloat("mouseSensitivity", mouseSensitivity.value);
+
+        if (subtitleToggle.isOn)
+        {
+            PlayerPrefs.SetInt("subtitle", 1);
+        }
+
+        else
+        {
+            PlayerPrefs.SetInt("subtitle", 0);
+        }
+
+        if (spookyTime > 0f)
+        {
+            spookyTime -= Time.unscaledDeltaTime;
+        }
+
+        if (spookyTime < 0f & !spooky)
+        {
+            Spooky();
+        }
+
+        if (!gameOver & !learning & !scrapJoining)
+        {
+            pm.enabled = true;
+        }
+
+        else
+        {
+            pm.enabled = false;
+        }
+
+        if (scraps == 4)
+        {
+            secretWall.enabled = false;
+        }
+
+        else
+        {
+            secretWall.enabled = true;
+        }
+
+        if (gameOver)
+        {
+            gameOverEnd -= Time.unscaledDeltaTime * 1f;
+            gameOverCamera.farClipPlane = gameOverEnd * 100f;
+        }
+
+        if (gameOverEnd < 0)
+        {
+            GameOverEnd("normal");
+        }
+
+        if (detentionTime > 0f)
+        {
+            detentionTime -= Time.deltaTime * 1;
+            detentionText.text = "Detention in process,\n" + Mathf.CeilToInt(detentionTime) + " seconds remain.";
+        }
+
+        else
+        {
+            detention = false;
+            detentionText.text = null;
+            detentionDoor.locked = false;
+        }
+
+        if (detention)
+        {
+            playerScript.detention = true;
+        }
+
+        else
+        {
+            playerScript.detention = false;
+        }
+
+        if (playerScript.guilt == "escape" & !detention & !priScript.angry)
+        {
+            playerScript.guilty = false;
+            playerScript.guilt = null;
+        }
+
+        if (rapTime > 0f & !gameOver)
+        {
+            rapTime -= Time.deltaTime;
+            rapText.text = "Listen to this beautiful music!\n(" + Mathf.CeilToInt(rapTime) + ")";
+        }
+
+        else
+        {
+            playerScript.rap = false;
+            rapText.text = null;
+            if (rapScript.gameObject.activeInHierarchy)
+            {
+                if (rapScript.agent.isStopped)
+                {
+                    rapScript.agent.isStopped = false;
+                }
+            }
+        }
+
+        if (spooky)
+        {
+            if (!Event & timeToStartEvent > 0f)
+            {
+                timeToStartEvent -= Time.deltaTime * 1f;
+            }
+
+            if (!Event & timeToStartEvent < 0f)
+            {
+                StartEvent(Random.Range(1, 1));
+            }
+
+            if (Event & timeToStopEvent > 0f)
+            {
+                timeToStopEvent -= Time.deltaTime * 1f;
+            }
+
+            if (Event & timeToStopEvent < 0f)
+            {
+                Event = false;
+                waterEvent = false;
+                water.SetActive(false);
+                fireEvent = false;
+                timeToStartEvent = Random.Range(560, 620);
+            }
+        }
+
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Input.GetButtonDown("Interact"))
+        {
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.transform.name == "SecretCube" & Vector3.Distance(player.position, hit.transform.position) < 10f)
+                {
+                    secretEnding = true;
+                    Destroy(hit.transform.gameObject);
+                }
+            }
+        }
+
+        if (maddieScript.antiHearingTime < 0f & maddieScript.antiHearing)
+        {
+            maddieScript.antiHearing = false;
+            printer.Stop();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Return) & allScrapsJoined)
+        {
+            if (!secretEnding)
+            {
+                SceneManager.LoadScene("Won");
+            }
+
+            else
+            {
+                SceneManager.LoadScene("Secret");
+            }
+
+            Time.timeScale = 1f;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        bool allScrapButtonsAreFalse = true;
+
+        foreach (var button in scrapButton)
+        {
+            if (button.activeSelf)
+            {
+                allScrapButtonsAreFalse = false;
+                break;
+            }
+        }
+
+        if (allScrapButtonsAreFalse)
+        {
+            allScrapsJoined = true;
+            scrapFull.SetActive(true);
+        }
+
+        if (Input.GetButtonDown("Use Item"))
+        {
+            UseItem();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            slotSelected = 0;
+            UpdateInventoryData();
+        }
+
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            slotSelected = 1;
+            UpdateInventoryData();
+        }
+
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            slotSelected = 2;
+            UpdateInventoryData();
+        }
+
+        if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+        {
+            slotSelected += 1;
+
+            if (slotSelected > 2)
+            {
+                slotSelected = 0;
+            }
+
+            UpdateInventoryData();
+        }
+
+        else if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+        {
+            slotSelected -= 1;
+
+            if (slotSelected < 0)
+            {
+                slotSelected = 2;
+            }
+
+            UpdateInventoryData();
+        }
+
+        if (slotSelected == 0)
+        {
+            selectArrows[0].SetActive(true);
+            selectArrows[1].SetActive(false);
+            selectArrows[2].SetActive(false);
+        }
+
+        else if (slotSelected == 1)
+        {
+            selectArrows[0].SetActive(false);
+            selectArrows[1].SetActive(true);
+            selectArrows[2].SetActive(false);
+        }
+
+        else if (slotSelected == 2)
+        {
+            selectArrows[0].SetActive(false);
+            selectArrows[1].SetActive(false);
+            selectArrows[2].SetActive(true);
+        }
+    }
+
+    public void Spooky()
+    {
+        spooky = true;
+        playerScript.spooky = true;
+        welcome.gameObject.SetActive(false);
+        welcomeSubtitle.SetActive(false);
+        enemyNPC.SetActive(true);
+        startBarriers.SetActive(false);
+        audioSource.clip = MUS_spooky;
+        audioSource.volume = 0.3f;
+        audioSource.Play();
+        scareAudio.PlayOneShot(ANGRY, 0.8f);
+        RenderSettings.fog = enabled;
+        RenderSettings.ambientLight = scaryLight;
+        RenderSettings.skybox = null;
+        flashlight.SetActive(true);
+        scaryWallRenderer.material = scaryMat;
+        bus.SetActive(false);
+        scrapCount.color = Color.white;
+        restText.color = Color.white;
+    }
+
+    public void SpookyIntro()
+    {
+        audioSource.Stop();
+        welcome.gameObject.SetActive(false);
+        welcomeSubtitle.SetActive(false);
+        spookyTime = LIGHTS_TURN_OFF.length;
+        preScareAudio.transform.position = playerScript.Camera.transform.position + new Vector3(0f, 0f, 5f);
+        player.localRotation = Quaternion.identity;
+        preScareAudio.PlayOneShot(LIGHTS_TURN_OFF, 0.8f);
+    }
+
+    public void Finale()
+    {
+        StartCoroutine("FinaleAudio");
+        entrances.transform.position = new Vector3(0f, 10f, 0f);
+    }
+
+    IEnumerator FinaleAudio()
+    {
+        finaleAudio.clip = nineScraps[0];
+        finaleAudio.Play();
+        finaleAudioSubtitles.text.text = "CONGRATULATIONS!";
+        yield return new WaitForSeconds(nineScraps[0].length);
+        finaleAudio.clip = nineScraps[1];
+        finaleAudio.Play();
+        finaleAudioSubtitles.text.text = "YOU HAVE SOLVED ALL OF MY MATH PROBLEMS!";
+        yield return new WaitForSeconds(nineScraps[1].length);
+        finaleAudio.clip = nineScraps[2];
+        finaleAudio.Play();
+        finaleAudioSubtitles.text.text = "TRY, IF YOU CAN, IF YOU STILL CAN, TO...";
+        yield return new WaitForSeconds(nineScraps[2].length);
+        finaleAudio.clip = nineScraps[3];
+        finaleAudio.Play();
+        finaleAudioSubtitles.text.text = "<b>GET YOUR STUPID ASS OUT OF THIS STUPID SCHOOL! JUST... UGHHH! GOD!</b>";
+    }
+
+    public void ExitReached()
+    {
+        exitsReached += 1;
+        audioSource.PlayOneShot(exitReached);
+
+        if (exitsReached == 1)
+        {
+            RenderSettings.ambientLight = Color.red;
+            RenderSettings.fogColor = finalFogColor;
+            flashlight.SetActive(false);
+        }
+
+        else if (exitsReached == 2)
+        {
+            audioSource.clip = LOUD;
+            audioSource.Play();
+        }
+    }
+
+    public void TeleportPlayer(Vector3 position, Quaternion rotation)
+    {
+        playerController.enabled = false;
+        player.position = position;
+        player.localRotation = rotation;
+        playerController.enabled = true;
+    }
+
+    public void ScrapJoin()
+    {
+        Time.timeScale = 0f;
+        hud.SetActive(false);
+        scrapConnect.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        scrapJoining = true;
+    }
+
+    public void GameOver()
+    {
+        gameOver = true;
+        Time.timeScale = 0f;
+        player.gameObject.SetActive(false);
+        gameOverCamera.gameObject.SetActive(true);
+        maddieScript.enabled = false;
+        audioSource.Stop();
+        rapMusic.Stop();
+        audioSource.PlayOneShot(currentDeathClip, 7f);
+    }
+
+    public void GameOverEnd(string type)
+    {
+        SceneManager.LoadScene("BSOD02");
+        PlayerPrefs.SetString("GameOver", type);
+        Time.timeScale = 1f;
+    }
+
+    void StartEvent(int id)
+    {
+        Event = true;
+        timeToStopEvent = Random.Range(60, 120);
+
+        if (id == 1)
+        {
+            waterEvent = true;
+            water.SetActive(true);
+        }
+    }
+
+    public void Menu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+        AudioListener.pause = false;
+        AudioListener.volume = 1f;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void ButtonEnter(TextMeshProUGUI text)
+    {
+        text.fontStyle = FontStyles.Underline;
+    }
+
+    public void ButtonExit(TextMeshProUGUI text)
+    {
+        text.fontStyle = FontStyles.Normal;
+    }
+
+    public void UpdateScapText()
+    {
+        scrapCount.text = scraps + "/9 Poem Scraps";
+    }
+
+    public void UpdateInventoryData()
+    {
+        itemImages[0].sprite = itemTextures[items[0]];
+        itemImages[1].sprite = itemTextures[items[1]];
+        itemImages[2].sprite = itemTextures[items[2]];
+        itemText.text = itemNames[items[slotSelected]];
+    }
+
+    public void AddItem(int id)
+    {
+        if (items[0] == 0)
+        {
+            items[0] = id;
+        }
+
+        else if (items[1] == 0)
+        {
+            items[1] = id;
+        }
+
+        else if (items[2] == 0)
+        {
+            items[2] = id;
+        }
+
+        else
+        {
+            items[slotSelected] = id;
+        }
+
+        UpdateInventoryData();
+    }
+
+    void UseItem()
+    {
+        if (items[slotSelected] != 0)
+        {
+            if (items[slotSelected] == 1)
+            {
+                Instantiate(soda, new Vector3(player.position.x, 5, player.position.z), player.localRotation);
+                RemoveItem();
+            }
+
+            else if (items[slotSelected] == 2)
+            {
+                playerScript.energetic = true;
+                playerScript.energyTime = 20f;
+                RemoveItem();
+            }
+
+            else if (items[slotSelected] == 3)
+            {
+                if (playerScript.rap)
+                {
+                    rapScript.Cut();
+                    RemoveItem();
+                }
+            }
+
+            else if (items[slotSelected] == 4)
+            {
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                if (Physics.Raycast(ray, out hit) & Vector3.Distance(player.position, priScript.transform.position) <= 20f)
+                {
+                    if (hit.transform.name == "PRI" & !priScript.busy & !detention)
+                    {
+                        priScript.Distract();
+                        RemoveItem();
+                    }
+                }
+            }
+
+            else if (items[slotSelected] == 5)
+            {
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                if (Physics.Raycast(ray, out hit) & Vector3.Distance(player.position, maddieScript.transform.position) <= 20f)
+                {
+                    if (hit.transform.name == "Maddie" & !maddieScript.preparing & !maddieScript.cutting & !maddieScript.antiHearing)
+                    {
+                        maddieScript.CutLog();
+                        RemoveItem();
+                    }
+                }
+            }
+
+            else if (items[slotSelected] == 6) //dollar code
+            {
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                if (Physics.Raycast(ray, out hit))
+                {
+                    if (hit.transform.name == "PrinterButton" & Vector3.Distance(player.position, hit.transform.position) < 10f & !maddieScript.antiHearing)
+                    {
+                        printer.Play();
+                        maddieScript.antiHearing = true;
+                        maddieScript.antiHearingTime = 30f;
+                        RemoveItem();
+                    }
+                }
+            }
+        }
+    }
+
+    void RemoveItem()
+    {
+        items[slotSelected] = 0;
+        UpdateInventoryData();
+    }
+}
