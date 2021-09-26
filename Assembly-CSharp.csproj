@@ -79,7 +79,6 @@
      <Compile Include="Assets\Scripts\Credits.cs" />
      <Compile Include="Assets\Scripts\Bus.cs" />
      <Compile Include="Assets\Scripts\Warning.cs" />
-     <Compile Include="Assets\Scripts\BSOD_Teleport.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\ScrapTut.cs" />
      <Compile Include="Assets\Scripts\PLN_FixProblem.cs" />
