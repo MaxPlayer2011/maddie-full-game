@@ -8,8 +8,10 @@ public class Quiz : MonoBehaviour
     public bool spookyIntro;
     public int qNumber;
     public float timeToDark;
+    private float timeToPlayMus = 0.40f;
     public string correct;
     private GameManager gm;
+    private AudioSource audioSource;
     public TextMeshProUGUI title;
     public TMP_InputField answer;
     public GameObject next;
@@ -22,33 +24,47 @@ public class Quiz : MonoBehaviour
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        audioSource = GetComponentInParent<AudioSource>();
+        gm.welcome.Stop();
 
-        if (final == false)
+        if (!final)
         {
             int num1 = Random.Range(0, 10);
             int num2 = Random.Range(0, 10);
             int plusOrMinus = Random.Range(0, 2);
-            int Correct;
 
             if (plusOrMinus == 0)
             {
-                Correct = num1 + num2;
+                correct = (num1 + num2).ToString();
                 title.text = "Q" + qNumber + ": What is " + num1 + " + " + num2 + "?";
             }
 
             else
             {
-                Correct = num1 - num2;
+                correct = (num1 - num2).ToString();
                 title.text = "Q" + qNumber + ": What is " + num1 + " - " + num2 + "?";
             }
+        }
 
-            correct = Correct + "";
+        if (!gm.spooky)
+        {
+            gm.StopAudio();
         }
     }
 
     void Update()
     {
         answer.Select();
+
+        if (timeToPlayMus > 0f & !gm.spooky)
+        {
+            timeToPlayMus -= Time.unscaledDeltaTime;
+        }
+
+        if (timeToPlayMus < 0f & !audioSource.isPlaying & !gm.spooky & !spookyIntro)
+        {
+            audioSource.Play();
+        }
 
         if (timeToDark > 0f)
         {
@@ -79,9 +95,11 @@ public class Quiz : MonoBehaviour
                 {
                     gm.maddieScript.anger += 1;
                 }
-                
+
                 if (!gm.spooky)
                 {
+                    audioSource.Stop();
+                    
                     if (!final)
                     {
                         gm.Spooky();
@@ -130,6 +148,6 @@ public class Quiz : MonoBehaviour
         gm.playerScript.stamina.value = 100f;
         gm.UpdateScapText();
         gm.learning = false;
-        Destroy(transform.parent.gameObject);
+        Destroy(transform.root.gameObject);
     }
 }

@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
         {
             gameOverEnd = 1.967f;
         }
-        
+
         if (PlayerPrefs.GetInt("subtitle") == 1)
         {
             subtitleToggle.isOn = true;
@@ -649,5 +649,10 @@ public class GameManager : MonoBehaviour
     {
         items[slotSelected] = 0;
         UpdateInventoryData();
+    }
+
+    public void StopAudio()
+    {
+        audioSource.Stop();
     }
 }
