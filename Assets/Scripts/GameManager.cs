@@ -584,6 +584,7 @@ public class GameManager : MonoBehaviour
             {
                 playerScript.energetic = true;
                 playerScript.energyTime = 20f;
+                playerScript.stamina.value = 100f;
                 RemoveItem();
             }
 
