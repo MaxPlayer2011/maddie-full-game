@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) & controller.velocity != Vector3.zero)
         {
             if (mainGame)
             {
@@ -168,14 +168,12 @@ public class Player : MonoBehaviour
         if (stamina.value > 0)
         {
             currentSpeed = sprintSpeed;
+
             if (!outside)
             {
-                if (controller.velocity != Vector3.zero)
-                {
-                    stamina.value -= 20 * Time.deltaTime;
-                }
+                stamina.value -= 20 * Time.deltaTime;
 
-                if (detention == false)
+                if (!detention)
                 {
                     guilt = "run";
                 }
