@@ -4,12 +4,30 @@ public class MIDI_Loop_Controller : MonoBehaviour
 {
     public bool unscaled;
     private float timeToPlay;
-    public float midiLength;
+    private float midiLength;
     private AudioSource audioSource;
+    public enum musicTypeType
+    {
+        Null,
+        LearningHorror,
+        Hell
+    }
+    public musicTypeType musicType;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+
+        if (musicType == musicTypeType.Hell)
+        {
+            midiLength = 3.875f;
+        }
+
+        else if (musicType == musicTypeType.LearningHorror)
+        {
+            midiLength = 4f;
+        }
+
         timeToPlay = midiLength;
     }
 

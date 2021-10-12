@@ -423,7 +423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unscaled: 1
-  midiLength: 4
+  musicType: 1
 --- !u!1 &1323534683950220253
 GameObject:
   m_ObjectHideFlags: 0
