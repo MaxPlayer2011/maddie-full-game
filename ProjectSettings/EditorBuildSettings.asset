@@ -42,9 +42,6 @@ EditorBuildSettings:
     path: Assets/Scenes/FT_metro.unity
     guid: aa77fec53c3504ed0a4107c6a65a0047
   - enabled: 1
-    path: Assets/Scenes/GameOver.unity
-    guid: 6b124de430c781c42b47217c04b34332
-  - enabled: 1
     path: Assets/Scenes/BSOD02.unity
     guid: 78b927b96261c40d79ac00d9563661c5
   - enabled: 1
