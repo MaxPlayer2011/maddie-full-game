@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -5,6 +6,8 @@ public class PRI : MonoBehaviour
 {
     public bool angry;
     public bool busy;
+    public int detentionTime;
+    private int nextDetentionTimer = 15;
     public float timeToHum;
     public float timeToGetAngry;
     public float timeToNormal;
@@ -17,7 +20,11 @@ public class PRI : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public Sprite normal;
     public Sprite reading;
-    public AudioClip detentionClip;
+    public AudioClip detentionIntroClip;
+    public AudioClip[] detentionTimerClip;
+    public string[] detentionTimerText;
+    public AudioClip[] detentionWarnClip;
+    public string[] detentionWarnText;
     public AudioClip noRunning;
     public AudioClip noEscaping;
     public AudioClip noBullying;
@@ -42,7 +49,7 @@ public class PRI : MonoBehaviour
         {
             timeToHum = Random.Range(500, 620);
 
-            if (!angry)
+            if (!angry & !agent.isStopped)
             {
                 hum.PlayOneShot(humClip, 2f);
                 dialogeSystemHum.text.text = "*Humming*";
@@ -70,6 +77,26 @@ public class PRI : MonoBehaviour
         {
             agent.SetDestination(gm.player.position);
         }
+
+        if (detentionTime == 1)
+        {
+            nextDetentionTimer = 30;
+        }
+
+        else if (detentionTime == 2)
+        {
+            nextDetentionTimer = 60;
+        }
+
+        else if (detentionTime >= 3)
+        {
+            nextDetentionTimer = 120;
+        }
+
+        if (detentionTime > 4)
+        {
+            detentionTime = 4;
+        }
         
         Vector3 direction = gm.player.position - transform.position;
         RaycastHit hit;
@@ -78,7 +105,7 @@ public class PRI : MonoBehaviour
         {
             if (gm.detention == false)
             {
-                if (Input.GetKey(KeyCode.LeftShift) & timeToGetAngry > 0f & !gm.playerScript.outside & gm.playerScript.stamina.value > 0f)
+                if (Input.GetKey(KeyCode.LeftShift) & timeToGetAngry > 0f & !gm.playerScript.outside & gm.playerScript.stamina.value > 0f & gm.playerScript.currentSpeed == gm.playerScript.sprintSpeed)
                 {
                     timeToGetAngry -= Time.deltaTime * 1f;
                 }
@@ -102,7 +129,7 @@ public class PRI : MonoBehaviour
 
                     if (gm.playerScript.guilt == "run")
                     {
-                        PlayRuleBreakAudio(noRunning, "No running!... in the halls!");
+                        PlayAudio(noRunning, "No running!... in the halls!");
                     }
                 }
             }
@@ -110,14 +137,14 @@ public class PRI : MonoBehaviour
             if (gm.playerScript.guilty & !angry & gm.detention)
             {
                 angry = true;
-                PlayRuleBreakAudio(noEscaping, "No escaping detention!... in the halls!");
+                PlayAudio(noEscaping, "No escaping detention!... in the halls!");
             }
         }
 
         direction = gm.bullyScript.transform.position - transform.position;
         if (Physics.Raycast(transform.position, direction, out hit, Mathf.Infinity, 3, QueryTriggerInteraction.Ignore) & hit.transform.tag == "Bully" & gm.bullyScript.spoken & !angry & !busy)
         {
-            PlayRuleBreakAudio(noBullying, "No bullying students!... in the halls!");
+            PlayAudio(noBullying, "No bullying students!... in the halls!");
             gm.bullyScript.Spawn(false);
         }
     }
@@ -127,13 +154,15 @@ public class PRI : MonoBehaviour
         if ((other.CompareTag("Player")) & angry)
         {
             gm.detention = true;
-            gm.detentionTime = 15f;
+            gm.detentionTime = nextDetentionTimer;
+            detentionTime++;
             gm.playerController.enabled = false;
             gm.player.transform.position = new Vector3(183f, 0f, 122f);
             gm.player.transform.localRotation = Quaternion.Euler(0, 180, 0);
             gm.playerController.enabled = true;
             agent.Warp(new Vector3(183f, 0f, 110f));
-            PlayRuleBreakAudio(detentionClip, "15 Seconds!... Detention for you!");
+            agent.isStopped = true;
+            StartCoroutine("DetentionAudio");
             gm.maddieScript.Hear(transform.position);
             gm.detentionDoor.locked = true;
             timeToGetAngry = 0.5f;
@@ -150,7 +179,7 @@ public class PRI : MonoBehaviour
         }
     }
 
-    void PlayRuleBreakAudio(AudioClip clip, string subtitle)
+    void PlayAudio(AudioClip clip, string subtitle)
     {
         hum.Stop();
         audioSource.clip = clip;
@@ -167,5 +196,17 @@ public class PRI : MonoBehaviour
         gm.playerScript.guilty = false;
         spriteRenderer.sprite = reading;
         agent.isStopped = true;
+    }
+
+    IEnumerator DetentionAudio()
+    {
+        PlayAudio(detentionIntroClip, "You get detention for");
+        yield return new WaitForSeconds(detentionIntroClip.length + 0.25f);
+        PlayAudio(detentionTimerClip[detentionTime - 1], detentionTimerText[detentionTime - 1]);
+        yield return new WaitForSeconds(detentionTimerClip[detentionTime - 1].length + 0.25f);
+        int random_warn = Random.Range(0, detentionWarnClip.Length);
+        PlayAudio(detentionWarnClip[random_warn], detentionWarnText[random_warn]);
+        yield return new WaitForSeconds(detentionWarnClip[random_warn].length);
+        agent.isStopped = false;
     }
 }

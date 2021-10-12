@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialoge: '*Humming*'
-  multiplySubtitlePosition: 0
+  multiplySubtitlePosition: 1
   subtitle: {fileID: 0}
   text: {fileID: 0}
   hud: {fileID: 0}
@@ -348,13 +348,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angry: 0
   busy: 0
+  detentionTime: 0
   timeToHum: 40
   timeToGetAngry: 0.5
   timeToNormal: 0
   hum: {fileID: 3139429744845246904}
   normal: {fileID: -8958667189033422250, guid: d24d62227a653b34596425af8574992d, type: 3}
   reading: {fileID: -4526289166631224617, guid: d24d62227a653b34596425af8574992d, type: 3}
-  detentionClip: {fileID: 8300000, guid: 04107b8bf97384950aef3272263640c6, type: 3}
+  detentionIntroClip: {fileID: 8300000, guid: 2578d655c01df5742b1c01ba9217648e, type: 3}
+  detentionTimerClip:
+  - {fileID: 8300000, guid: 83c00d19561b9fa45be3593705ec927d, type: 3}
+  - {fileID: 8300000, guid: d29f454dfe157a24aa5f23676fd68cb9, type: 3}
+  - {fileID: 8300000, guid: 1ec597fd95afc7f41b65902ad30721e3, type: 3}
+  - {fileID: 8300000, guid: f9344cb0a68dbfb4db3d398757f08ae3, type: 3}
+  detentionTimerText:
+  - 15 seconds!
+  - 30 seconds!
+  - 1 minute!
+  - 2 minutes!
+  detentionWarnClip:
+  - {fileID: 8300000, guid: fad2160b0ca2eae42933dd2bbf1e8023, type: 3}
+  - {fileID: 8300000, guid: a9e98856e956de94ba1c079901e4fa67, type: 3}
+  detentionWarnText:
+  - You better not do it again!
+  - I don't wanna see you do that again. Understood?
   noRunning: {fileID: 8300000, guid: 90185ef6eaba16a4c954e10e63bfeb80, type: 3}
   noEscaping: {fileID: 8300000, guid: 848737f3c3ae6401ba18473bbb5a5ab2, type: 3}
   noBullying: {fileID: 8300000, guid: f4cb2c78574c7488b91bb67b6fbdc06b, type: 3}

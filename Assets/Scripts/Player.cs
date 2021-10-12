@@ -3,7 +3,8 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    private float currentSpeed;
+    [HideInInspector]
+    public float currentSpeed;
     public float walkSpeed;
     public float sprintSpeed;
     public float default_walkSpeed;
