@@ -13,9 +13,10 @@ public class MainMenu : MonoBehaviour
     public Toggle subtitleToggle;
     public TMP_Dropdown lang;
     public GameObject mainScreen;
+    public GameObject changelog;
     public GameObject FT_Congrats;
     public GameObject debug;
-    public GameObject langButton;
+    public GameObject mainMenuFullScreen;
     public TextMeshProUGUI debugText;
     public TextMeshProUGUI versionText;
     public TMP_InputField sceneInput;
@@ -62,6 +63,11 @@ public class MainMenu : MonoBehaviour
         if (slider.value == 1f)
         {
             slider.value = 3f;
+        }
+
+        if (PlayerPrefs.GetString("lastVersion") != Application.version)
+        {
+            changelog.SetActive(true);
         }
 
         if (PlayerPrefs.GetInt("FT_Won") == 1)
@@ -134,12 +140,12 @@ public class MainMenu : MonoBehaviour
 
         if (mainScreen.activeInHierarchy == true)
         {
-            langButton.SetActive(true);
+            mainMenuFullScreen.SetActive(true);
         }
 
         else
         {
-            langButton.SetActive(false);
+            mainMenuFullScreen.SetActive(false);
         }
 
         if (PlayerPrefs.GetInt("debug") == 1)
@@ -188,14 +194,9 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void fnf()
+    public void ExitChangelog()
     {
-        Application.OpenURL("https://ninja-muffin24.itch.io/funkin");
-    }
-
-    public void Kickstarter()
-    {
-        Application.OpenURL("");
+        PlayerPrefs.SetString("lastVersion", Application.version);
     }
 
     public void ResetGame()
