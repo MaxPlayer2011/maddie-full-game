@@ -11,14 +11,17 @@ public class Subtitle : MonoBehaviour
     private AudioSource audioSource;
     private RectTransform subtitleRect;
     public Image subtitle;
+    [HideInInspector]
     public TextMeshProUGUI text;
-    public Canvas hud;
+    private Canvas hud;
     private GameObject player;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         subtitleRect = subtitle.GetComponent<RectTransform>();
+        text = subtitle.GetComponentInChildren<TextMeshProUGUI>();
+        hud = subtitle.transform.parent.GetComponent<Canvas>();
         player = GameObject.FindGameObjectWithTag("Player");
         text.text = dialoge;
     }
