@@ -78,7 +78,12 @@ public class Bully : MonoBehaviour
 
         else
         {
-            gm.items[Random.Range(0, 2)] = 0;
+            int randomItem = Random.Range(0, 2);
+            while (gm.items[randomItem] == 0)
+            {
+                randomItem = Mathf.RoundToInt(Random.Range(0, 2));
+            }
+            gm.items[randomItem] = 0;
             gm.UpdateInventoryData();
             int randomClip = Random.Range(0, accept.Length);
             highAudio.PlayOneShot(accept[randomClip]);
