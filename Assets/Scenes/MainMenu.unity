@@ -6538,7 +6538,9 @@ MonoBehaviour:
     -Game by gameZ Productions
 
     -Inspired by Baldi''s
-    Basics'
+    Basics
+
+    -Beginning bird textures from Anim8or'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b65a7b3eb49363848a744cf0117d982b, type: 2}
   m_sharedMaterial: {fileID: -8211029058635375950, guid: b65a7b3eb49363848a744cf0117d982b, type: 2}
