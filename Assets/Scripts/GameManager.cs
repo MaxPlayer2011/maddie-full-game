@@ -69,7 +69,6 @@ public class GameManager : MonoBehaviour
     public Transform[] bullySpawnPoints;
     private AudioSource rapMusic;
     public AudioSource welcome;
-    public GameObject welcomeSubtitle;
     public GameObject pauseMenu;
     public TextMeshProUGUI restText;
     public GameObject crosshair_hover;
@@ -391,7 +390,6 @@ public class GameManager : MonoBehaviour
         spooky = true;
         playerScript.spooky = true;
         welcome.gameObject.SetActive(false);
-        welcomeSubtitle.SetActive(false);
         enemyNPC.SetActive(true);
         startBarriers.SetActive(false);
         audioSource.clip = MUS_spooky;
@@ -411,10 +409,8 @@ public class GameManager : MonoBehaviour
     public void SpookyIntro()
     {
         audioSource.Stop();
-        welcome.gameObject.SetActive(false);
-        welcomeSubtitle.SetActive(false);
         spookyTime = LIGHTS_TURN_OFF.length;
-        preScareAudio.transform.position = playerScript.Camera.transform.position + new Vector3(0f, 0f, 5f);
+        preScareAudio.transform.position = playerScript.Camera.transform.position + Vector3.forward * 5f;
         player.localRotation = Quaternion.identity;
         preScareAudio.PlayOneShot(LIGHTS_TURN_OFF, 0.8f);
     }
