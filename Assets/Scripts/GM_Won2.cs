@@ -1,15 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GM_Kickstart : MonoBehaviour
+public class GM_Won2 : MonoBehaviour
 {
     void Update()
     {
-        /*if (Input.GetKeyDown(KeyCode.K))
-        {
-            Application.OpenURL("");
-        }*/
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene("MainMenu");

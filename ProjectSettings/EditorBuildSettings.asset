@@ -48,7 +48,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Won.unity
     guid: 99a2b2f69f806624ea334810c6e9e555
   - enabled: 1
-    path: Assets/Scenes/Kickstart.unity
+    path: Assets/Scenes/Won2.unity
     guid: 427308c159d51824b91e9dedcd200c2c
   - enabled: 1
     path: Assets/Scenes/Secret.unity
