@@ -44,7 +44,7 @@ public class GM_Won : MonoBehaviour
         
         if (timeToKickstart < 0f)
         {
-            SceneManager.LoadScene("Kickstart");
+            SceneManager.LoadScene("Won2");
         }
     }
 }
