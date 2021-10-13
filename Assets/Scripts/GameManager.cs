@@ -75,9 +75,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scrapCount;
     public TextMeshProUGUI detentionText;
     public TextMeshProUGUI rapText;
-    public MeshRenderer scaryWallRenderer;
+    public Animator horrorBird_anim;
     public MeshCollider secretWall;
-    public Material scaryMat;
     public PauseManager pm;
     public Color scaryLight;
     public Color finalFogColor;
@@ -400,7 +399,7 @@ public class GameManager : MonoBehaviour
         RenderSettings.ambientLight = scaryLight;
         RenderSettings.skybox = null;
         flashlight.SetActive(true);
-        scaryWallRenderer.material = scaryMat;
+        horrorBird_anim.enabled = true;
         bus.SetActive(false);
         scrapCount.color = Color.white;
         restText.color = Color.white;
