@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class GM_Secret : MonoBehaviour
 {
@@ -62,15 +62,9 @@ public class GM_Secret : MonoBehaviour
 
         if (timeToQuit < 0f)
         {
-#if UNITY_EDITOR
             {
-                EditorApplication.isPlaying = false;
+                SceneManager.LoadScene("Credits");
             }
-#else
-{
-    Application.Quit();
-}
-#endif
         }
     }
 

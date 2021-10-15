@@ -1,24 +1,21 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.Video;
 using UnityEngine.SceneManagement;
 
 public class Credits : MonoBehaviour
 {
-    private VideoPlayer videoPlayer;
+    public Animator anim;
+    public GameObject mus;
 
-    void Start()
+    IEnumerator Start()
     {
-        videoPlayer = GetComponent<VideoPlayer>();
-    }
-
-    void Update()
-    {
-        if (videoPlayer.isPlaying == false & videoPlayer.isPrepared == true)
-        {
-            SceneManager.LoadScene("MainMenu");
-            PlayerPrefs.SetInt("won", 1);
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        PlayerPrefs.SetInt("won", 1);
+        DontDestroyOnLoad(mus);
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+        SceneManager.LoadScene("MainMenu");
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }

@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     private int langValue;
     private bool reseting;
+    private AudioSource audioSource;
     public TextMeshProUGUI tut;
     public TextMeshProUGUI langText;
     public Slider slider;
@@ -20,10 +21,12 @@ public class MainMenu : MonoBehaviour
     public TextMeshProUGUI debugText;
     public TextMeshProUGUI versionText;
     public TMP_InputField sceneInput;
+    public Sprite wonScreen;
     public FPSCounter fps;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         slider.value = PlayerPrefs.GetFloat("mouseSensitivity");
 
         if (PlayerPrefs.GetInt("subtitle") == 1)
@@ -74,6 +77,18 @@ public class MainMenu : MonoBehaviour
         {
             FT_Congrats.SetActive(true);
             PlayerPrefs.SetInt("FT_Won", 0);
+        }
+
+        if (PlayerPrefs.GetInt("won") == 1)
+        {
+            mainScreen.GetComponent<Image>().sprite = wonScreen;
+            versionText.color = Color.white;
+            PlayerPrefs.SetInt("won", 0);
+        }
+
+        else
+        {
+            audioSource.Play();
         }
     }
 

@@ -7,7 +7,7 @@ public class GM_Won2 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("Credits");
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
