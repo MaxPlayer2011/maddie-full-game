@@ -10,7 +10,8 @@ public class AchievementManager : MonoBehaviour
         BeatGame,
         SecretLevel,
         PassTut,
-        HardQ
+        HardQ,
+        DOS_Secret
     };
     public Animator anim;
     public TextMeshProUGUI achieveText;
@@ -29,6 +30,31 @@ public class AchievementManager : MonoBehaviour
             if (type == achieveType.StartGame.ToString())
             {
                 SpawnAchievement("\"Oh, Hello There!\"", "Start the game", achieveSprite[0]);
+            }
+
+            else if (type == achieveType.BeatGame.ToString())
+            {
+                SpawnAchievement("Mmm, Cake!", "Beat the game", achieveSprite[1]);
+            }
+
+            else if (type == achieveType.SecretLevel.ToString())
+            {
+                SpawnAchievement("What the hell is this?", "Get the secret ending", achieveSprite[2]);
+            }
+
+            else if (type == achieveType.PassTut.ToString())
+            {
+                SpawnAchievement("\"..will force you to listen to his crappy music for 5 seconds.\"", "Pass the tutorial", achieveSprite[3]);
+            }
+
+            else if (type == achieveType.HardQ.ToString())
+            {
+                SpawnAchievement("Hey! This is impossible!", "Get the impossible question", achieveSprite[4]);
+            }
+
+            else if (type == achieveType.DOS_Secret.ToString())
+            {
+                SpawnAchievement("It's so dark in here...", "Access \"SECRET.BAT\"", achieveSprite[5]);
             }
 
             PlayerPrefs.SetInt("ACH_" + type, 1);
