@@ -4,17 +4,12 @@ using UnityEngine.SceneManagement;
 
 public class Logo : MonoBehaviour
 {
-    void Start()
+    IEnumerator Start()
     {
-        StartCoroutine("Menu");
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    IEnumerator Menu()
-    {
-        yield return new WaitForSeconds(5);
-
+        GameObject.FindGameObjectWithTag("ACH_Canvas").GetComponent<AchievementManager>().CreateAchievement("StartGame");
+        yield return new WaitForSeconds(5f);
         if (PlayerPrefs.GetInt("hasPlayedBefore") == 0 & PlayerPrefs.GetInt("debug") == 1)
         {
             SceneManager.LoadScene("FirstTime");
