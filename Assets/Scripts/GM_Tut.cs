@@ -82,7 +82,7 @@ public class GM_Tut : MonoBehaviour
     {
         if (Input.GetButtonDown("Pause"))
         {
-            if (paused == true)
+            if (paused)
             {
                 Resume();
             }
