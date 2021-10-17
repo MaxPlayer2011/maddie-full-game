@@ -8,7 +8,6 @@ public class Logo : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        GameObject.FindGameObjectWithTag("ACH_Canvas").GetComponent<AchievementManager>().CreateAchievement("StartGame");
         yield return new WaitForSeconds(5f);
         if (PlayerPrefs.GetInt("hasPlayedBefore") == 0 & PlayerPrefs.GetInt("debug") == 1)
         {
