@@ -6,13 +6,16 @@ using TMPro;
 public class DOS : MonoBehaviour
 {
     private bool gameWantsToLaunch;
-    private bool hint;
+    private bool screen;
     private float timeToLaunchGame = 3f;
     public GameObject textParent;
     public GameObject hintObject;
     public GameObject badCommand;
+    public GameObject secret;
+    public GameObject secretTxt;
     public GameObject text;
     public TMP_InputField inputField;
+    public AchievementManager am;
     
     void Start()
     {
@@ -24,23 +27,39 @@ public class DOS : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            if (!hint)
+            if (!screen)
             {
-                if (inputField.text == "MADDIE.EXE" | inputField.text == "maddie.exe")
+                if (inputField.text.ToLower() == "maddie.exe")
                 {
                     gameWantsToLaunch = true;
+                    am.CreateAchievement("StartGame");
                 }
 
-                else if (inputField.text == "HELP" | inputField.text == "help")
+                else if (inputField.text.ToLower() == "help")
                 {
-                    hint = true;
+                    screen = true;
                     textParent.SetActive(false);
                     hintObject.SetActive(true);
                 }
 
+                else if (inputField.text.ToLower() == "secret.txt")
+                {
+                    screen = true;
+                    textParent.SetActive(false);
+                    secretTxt.SetActive(true);
+                }
+
+                else if (inputField.text.ToLower() == "secret.bat")
+                {
+                    screen = true;
+                    textParent.SetActive(false);
+                    secret.SetActive(true);
+                    am.CreateAchievement("DOS_Secret");
+                }
+
                 else
                 {
-                    hint = true;
+                    screen = true;
                     textParent.SetActive(false);
                     badCommand.SetActive(true);
                 }
@@ -48,10 +67,12 @@ public class DOS : MonoBehaviour
 
             else
             {
-                hint = false;
+                screen = false;
                 textParent.SetActive(true);
                 hintObject.SetActive(false);
                 badCommand.SetActive(false);
+                secret.SetActive(false);
+                secretTxt.SetActive(false);
             }
 
             if (!gameWantsToLaunch)

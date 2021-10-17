@@ -1295,7 +1295,7 @@ MonoBehaviour:
   secretTxt: {fileID: 679558767}
   text: {fileID: 1383463751}
   inputField: {fileID: 354524388}
-  am: {fileID: 0}
+  am: {fileID: 1709203634}
 --- !u!1 &923282773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1793,3 +1793,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86080c806e1dffa4eae39dae446e2b33, type: 3}
+--- !u!114 &1709203634 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3499604760474925800, guid: 86080c806e1dffa4eae39dae446e2b33, type: 3}
+  m_PrefabInstance: {fileID: 1590279782}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07f87bb85d1a4a24384db7f9a1ad6701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
