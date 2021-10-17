@@ -11,6 +11,7 @@ TagManager:
   - Nurse
   - Soda
   - Bully
+  - ACH_Canvas
   layers:
   - Default
   - TransparentFX
