@@ -8,6 +8,7 @@ public class LevelTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             SceneManager.LoadScene("MainLevel");
+            GameObject.FindGameObjectWithTag("ACH_Canvas").GetComponent<AchievementManager>().CreateAchievement("PassTut");
         }
     }
 }
