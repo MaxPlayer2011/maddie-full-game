@@ -274,7 +274,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 1838.8}
+  m_SizeDelta: {x: 0, y: 2133.18}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &89405597
 MonoBehaviour:
@@ -297,13 +297,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\n<u>Maddie's Advanced Learning! Full Game</u>\n\n\n\nBy Maxim Naumov
-    (MaxPlayer2011)\n\n\n\n\n\n\n\n\n<u>MUSIC</u>\n\n<b>Kawai Sprite's Music</b>\n\nLunchbox\nLunchbox
-    (Scary)\nCocoa\nDad Battle\nThorns\n\n<b>MaxPlayer2011's Music</b>\n\nIntro\nHell\nLearning
-    Horror\n\n<u>Inspired by</u> Baldi's Basics\n<u>Beginning Bird Texture</u> from
-    Anim8or\n\n<u>Play Testers</u>\n\nMyst_Mystic (Adrian Zacios)\nmike3000 (Michael
-    Stryjek)\nAbdalluh123\n\n<u>Special Thanks To</u>\n\nAdrian Zacios\nMichael Stryjek\nOleg
-    Naumov\nAndrew Furletov\n\n\n<b>Thanks for playing!</b>\n\n\xA92021 gameZ Productions.
-    All rights reserved."
+    (MaxPlayer2011)\n\n\n\n\n\n\n\n\n<u>TOOLS USED</u>\n\nUnity\nAdobe Photoshop\r\nAdventure
+    Maker - Music Maker\r\nAudacity\r\nMicrosoft Visual Studio\r\n\n<u>MUSIC</u>\n\n<b>Kawai
+    Sprite's Music</b>\n\nCocoa\r\nDad Battle\r\nLunchbox\r\nLunchbox (Scary)\r\nThorns\r\n\n<b>MaxPlayer2011's
+    Music</b>\n\nIntro\nHell\nLearning Horror\n\n<u>Inspired by</u> Baldi's Basics\n<u>Beginning
+    Bird Texture</u> from Anim8or\n\n<u>Play Testers</u>\n\nMyst_Mystic (Adrian Zacios)\nmike3000
+    (Michael Stryjek)\nAbdalluh123\n\n<u>Special Thanks To</u>\n\nAdrian Zacios\nMichael
+    Stryjek\nOleg Naumov\nAndrew Furletov\n\n\n<b>Thanks for playing!</b>\n\n\xA92021
+    gameZ Productions. All rights reserved."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b65a7b3eb49363848a744cf0117d982b, type: 2}
   m_sharedMaterial: {fileID: -8211029058635375950, guid: b65a7b3eb49363848a744cf0117d982b, type: 2}
