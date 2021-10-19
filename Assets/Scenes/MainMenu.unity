@@ -8481,10 +8481,10 @@ RectTransform:
   m_Father: {fileID: 174441892}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 308, y: 523.58}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &995132046
 MonoBehaviour:
@@ -8511,18 +8511,26 @@ MonoBehaviour:
     <u>CHANGELOG</u>
 
 
-    -Fixed a bug where you would get stuck in
-    the cake level when you beat the game.
+    -Added occlusion culling, which saves a lot
+    of memory.
 
-    -Added a changelog feature.
+    -Added a credits feature at the end of the game.
 
     -Fixed
-    some textures not having the "DOS graphics" effect.
+    and added more to the tutorial.
 
-    -Created an animation
-    for the creepy bird in "Spooky Mode".
+    -Added a Bully poster.
 
-    -Changed the main menu a bit.'
+    -UI improvements
+    and fixes.
+
+    -Added an achievement system.
+
+    -Made it so GZ-DOS ignores
+    letter capitalization (for example, "mAdDiE.eXe" works now).
+
+    -Added easter
+    eggs to the GZ-DOS system.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e50ac66cfef6456448712925d9514ade, type: 2}
   m_sharedMaterial: {fileID: -9069644896615961332, guid: e50ac66cfef6456448712925d9514ade, type: 2}
@@ -11697,8 +11705,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1478151052}
   m_HandleRect: {fileID: 1478151051}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.73150235
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -12487,7 +12495,7 @@ RectTransform:
   m_Father: {fileID: 1489975789}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.26849765}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
