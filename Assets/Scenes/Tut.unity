@@ -5018,6 +5018,7 @@ MonoBehaviour:
   hgmTr4Intro1: {fileID: 8300000, guid: 92c2cf8d3964942079d706caf329f02c, type: 3}
   hgmTr4Explain1: {fileID: 8300000, guid: 587f6ed6b4753472fa3c1c2b60d7862d, type: 3}
   hgmTr4Explain2: {fileID: 8300000, guid: f5f11b5ca526a4f3dbbab9ad064ce4b3, type: 3}
+  hgmTr4Explain3: {fileID: 8300000, guid: ae476496b8db8cc47b3459051e6a6405, type: 3}
   hgmTr4Notice1: {fileID: 8300000, guid: 79ed9f2c1eacb488ea82cc301e0b3d17, type: 3}
   hgmTr4Praise1: {fileID: 8300000, guid: 21c62d2b7f9cc42ef8b5c37a83f2b153, type: 3}
   hgmTr4guideToNext: {fileID: 8300000, guid: fb7b1b907033a46a7ab0d4aa7647fee6, type: 3}

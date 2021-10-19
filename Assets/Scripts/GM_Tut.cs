@@ -65,6 +65,7 @@ public class GM_Tut : MonoBehaviour
     public AudioClip hgmTr4Intro1;
     public AudioClip hgmTr4Explain1;
     public AudioClip hgmTr4Explain2;
+    public AudioClip hgmTr4Explain3;
     public AudioClip hgmTr4Notice1;
     public AudioClip hgmTr4Praise1;
     public AudioClip hgmTr4guideToNext;
@@ -311,6 +312,9 @@ public class GM_Tut : MonoBehaviour
         hgmAudio4.PlayOneShot(hgmTr4Explain2);
         dialoge4.text.text = "Friday Night Yeah!... the creepy peace of paper... will force you to listen to his crappy music for 5 seconds.";
         yield return new WaitForSeconds(hgmTr4Explain2.length);
+        hgmAudio4.PlayOneShot(hgmTr4Explain3);
+        dialoge4.text.text = "Bully, the idiot behind you, will try to steal one of your items.";
+        yield return new WaitForSeconds(hgmTr4Explain3.length);
         hgmAudio4.PlayOneShot(hgmTr4Notice1);
         dialoge4.text.text = "Other characters coming soon!";
         yield return new WaitForSeconds(hgmTr4Notice1.length);
