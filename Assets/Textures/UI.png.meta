@@ -70,7 +70,7 @@ TextureImporter:
     second: MainMenu_Won
   - first:
       213: 238177201661318622
-    second: UI_22
+    second: doors95
   - first:
       213: 9084407170249120912
     second: DEAD_01
@@ -1142,6 +1142,27 @@ TextureImporter:
       bones: []
       spriteID: 52dc04f612e727cf0800000000000000
       internalID: -256003546741158619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doors95
+      rect:
+        serializedVersion: 2
+        x: 2486
+        y: 3135
+        width: 640
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed59e9a27ec2e4300800000000000000
+      internalID: 238177201661318622
       vertices: []
       indices: 
       edges: []

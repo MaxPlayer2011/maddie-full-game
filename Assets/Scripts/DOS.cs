@@ -13,6 +13,7 @@ public class DOS : MonoBehaviour
     public GameObject badCommand;
     public GameObject secret;
     public GameObject secretTxt;
+    public GameObject errorMessage;
     public GameObject text;
     public TMP_InputField inputField;
     public AchievementManager am;
@@ -57,6 +58,16 @@ public class DOS : MonoBehaviour
                     am.CreateAchievement("DOS_Secret");
                 }
 
+                else if (inputField.text.ToLower() == "doors")
+                {
+                    screen = true;
+                    textParent.SetActive(false);
+                    errorMessage.SetActive(true);
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                    am.CreateAchievement("DOS_Doors");
+                }
+
                 else
                 {
                     screen = true;
@@ -73,6 +84,9 @@ public class DOS : MonoBehaviour
                 badCommand.SetActive(false);
                 secret.SetActive(false);
                 secretTxt.SetActive(false);
+                errorMessage.SetActive(false);
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
             }
 
             if (!gameWantsToLaunch)

@@ -11,7 +11,8 @@ public class AchievementManager : MonoBehaviour
         SecretLevel,
         PassTut,
         HardQ,
-        DOS_Secret
+        DOS_Secret,
+        DOS_Doors
     };
     public Animator anim;
     public TextMeshProUGUI achieveText;
@@ -55,6 +56,11 @@ public class AchievementManager : MonoBehaviour
             else if (type == achieveType.DOS_Secret.ToString())
             {
                 SpawnAchievement("It's so dark in here...", "Access \"SECRET.BAT\"", achieveSprite[5]);
+            }
+
+            else if (type == achieveType.DOS_Doors.ToString())
+            {
+                SpawnAchievement("Doors 95? That sounds familiar...", "Open \"Doors 95\"", achieveSprite[6]);
             }
 
             PlayerPrefs.SetInt("ACH_" + type, 1);
