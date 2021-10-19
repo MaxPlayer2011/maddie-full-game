@@ -19,6 +19,7 @@ public class GM_Secret : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         timeToGlitch = audioSource.clip.length + 2f;
+        GameObject.FindGameObjectWithTag("ACH_Canvas").GetComponent<AchievementManager>().CreateAchievement("SecretLevel");
     }
 
     void Update()

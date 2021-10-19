@@ -14,6 +14,7 @@ public class GM_Won : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        GameObject.FindGameObjectWithTag("ACH_Canvas").GetComponent<AchievementManager>().CreateAchievement("BeatGame");
     }
 
     void Update()

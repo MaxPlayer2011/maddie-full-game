@@ -82,6 +82,11 @@ public class Quiz : MonoBehaviour
             gm.spookyTime = 0f;
         }
 
+        if (final)
+        {
+            GameObject.FindGameObjectWithTag("ACH_Canvas").GetComponent<AchievementManager>().CreateAchievement("HardQ");
+        }
+
         if (Input.GetKeyDown(KeyCode.Return))
         {
             if (answer.text == correct)
