@@ -307,7 +307,7 @@ public class GM_Tut : MonoBehaviour
         dialoge4.text.text = "Alright! Last training room: characters.";
         yield return new WaitForSeconds(hgmTr4Intro1.length);
         hgmAudio4.PlayOneShot(hgmTr4Explain1);
-        dialoge4.text.text = "Principal... the bald guy in the gray shirt... will give you detention if you break the rules. Make sure to look at the rule poster when you start playing.";
+        dialoge4.text.text = "Principal... the bald guy in the gray shirt... will give you detention if you break the rules.";
         yield return new WaitForSeconds(hgmTr4Explain1.length);
         hgmAudio4.PlayOneShot(hgmTr4Explain2);
         dialoge4.text.text = "Friday Night Yeah!... the creepy piece of paper... will force you to listen to his crappy music for 5 seconds.";
