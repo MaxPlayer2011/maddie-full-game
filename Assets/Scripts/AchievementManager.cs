@@ -69,7 +69,7 @@ public class AchievementManager : MonoBehaviour
 
     void SpawnAchievement(string title, string text, Sprite sprite)
     {
-        anim.Play("Spawn");
+        anim.Play("Spawn", -1, 0f);
         image.sprite = sprite;
         achieveText.text = "<u>Achievement Get!</u>\n<b>" + title + "</b>\n" + text;
     }
