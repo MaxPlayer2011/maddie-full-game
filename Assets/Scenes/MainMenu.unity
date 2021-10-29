@@ -8484,7 +8484,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 308, y: 661.56}
+  m_SizeDelta: {x: 308, y: 799.55}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &995132046
 MonoBehaviour:
@@ -8511,24 +8511,31 @@ MonoBehaviour:
     <u>CHANGELOG</u>
 
 
-    ATTENTION! IF YOU EVER PLAYED V0.0.12, IT
-    IS ADVISED YOU GO TO OPTIONS >> RESET GAME! THIS WILL FIX SOME OF YOUR BUGS!
+    -Fixed the crosshair being under subtitles
+    in the tutorial.
 
+    -Fixed not being able to interact with scraps when clicking
+    "E" in the tutorial.
 
+    -Fixed a bug where the crosshair is stuck in "hover
+    mode" after solving math in the tutorial.
 
-    -Fixed
-    the exits not rendering properly in "finale mode".
+    -Fixed a bug where Help GameObject
+    plays multiple audio when you get a question wrong on the third question in the
+    tutorial.
 
-    -Changed the map a bit.
+    -Fixed capitalization for Friday Night Yeah!''s poster.
 
-    -Fixed
-    the achievements sometimes not showing.
+    -Tweaked
+    the bus a bit.
 
-    -Added a feature where you can skip
-    the logo by clicking SPACE or ESC.
+    -Fixed up pivots in some sprites.
 
-    -Fixed the cursor showing up for a slight
-    second when you get redirected to the credits (at the end of the game).'
+    -Fixed the bird
+    animation not working in other entrances in "spooky mode".
+
+    -Removed the
+    Level Manager for now because currently, there is only one floor.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e50ac66cfef6456448712925d9514ade, type: 2}
   m_sharedMaterial: {fileID: -9069644896615961332, guid: e50ac66cfef6456448712925d9514ade, type: 2}
@@ -11491,7 +11498,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1478151051}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.57893467
+  m_Size: 0.47901946
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -12280,7 +12287,7 @@ RectTransform:
   m_Father: {fileID: 1489975789}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.42106533}
+  m_AnchorMin: {x: 0, y: 0.52098054}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
