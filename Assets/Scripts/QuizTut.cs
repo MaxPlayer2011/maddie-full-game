@@ -61,6 +61,7 @@ public class QuizTut : MonoBehaviour
                 Time.timeScale = 1f;
                 gm.UpdateScrapText();
                 gm.StartCoroutine("tr3final");
+                gm.incorrectAudio.Stop();
                 Destroy(transform.parent.gameObject);
             }
 

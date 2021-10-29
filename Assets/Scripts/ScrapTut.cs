@@ -15,7 +15,7 @@ public class ScrapTut : MonoBehaviour
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetButtonDown("Interact"))
         {
             if (Physics.Raycast(ray, out hit) & Time.timeScale == 1f)
             {
@@ -23,8 +23,9 @@ public class ScrapTut : MonoBehaviour
                 {
                     Instantiate(math);
                     Time.timeScale = 0f;
-                    gm.scraps += 1;
+                    gm.scraps = 1;
                     Destroy(hit.transform.gameObject);
+                    GetComponent<Hover>().MouseExit();
                 }
             }
         }
