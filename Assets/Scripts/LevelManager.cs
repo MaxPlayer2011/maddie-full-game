@@ -21,6 +21,11 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         debugText.text = "DEBUG\nVersion: " + Application.version + ", Unity Version: " + Application.unityVersion + ",\nFPS: " + fps.m_CurrentFps + ",\ncurrentFloor PlayerPrefs: " + PlayerPrefs.GetInt("currentFloor");
+
+        if (PlayerPrefs.GetInt("currentFloor") == 1)
+        {
+            SceneManager.LoadScene("MainLevel");
+        }
     }
 
     public void OpenFloor(int floor)
