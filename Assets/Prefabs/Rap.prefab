@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 477904576730709729}
   - component: {fileID: 477904576730709730}
-  - component: {fileID: 7217835726894549232}
+  - component: {fileID: 835673398599781905}
   - component: {fileID: 477904576730709731}
   m_Layer: 0
   m_Name: Sprite
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477904576730709728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 477904576844379977}
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &7217835726894549232
+--- !u!65 &835673398599781905
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,7 +96,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 5.26, y: 6.43, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 3.215, z: 0}
 --- !u!114 &477904576730709731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,7 +408,6 @@ MonoBehaviour:
   multiplySubtitlePosition: 1
   subtitle: {fileID: 0}
   text: {fileID: 0}
-  hud: {fileID: 0}
 --- !u!114 &478842013302995838
 MonoBehaviour:
   m_ObjectHideFlags: 0
