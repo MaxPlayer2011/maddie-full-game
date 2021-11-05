@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -102,7 +101,7 @@ public class DOS : MonoBehaviour
 
         else
         {
-            EventSystem.current.SetSelectedGameObject(null);
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
             timeToLaunchGame -= Time.deltaTime;
             text.SetActive(true);
         }
