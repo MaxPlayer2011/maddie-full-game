@@ -15,7 +15,6 @@ public class MainMenu : MonoBehaviour
     public TMP_Dropdown lang;
     public GameObject mainScreen;
     public GameObject changelog;
-    public GameObject FT_Congrats;
     public GameObject debug;
     public GameObject mainMenuFullScreen;
     public TextMeshProUGUI debugText;
@@ -71,12 +70,6 @@ public class MainMenu : MonoBehaviour
         if (PlayerPrefs.GetString("lastVersion") != Application.version)
         {
             changelog.SetActive(true);
-        }
-
-        if (PlayerPrefs.GetInt("FT_Won") == 1)
-        {
-            FT_Congrats.SetActive(true);
-            PlayerPrefs.SetInt("FT_Won", 0);
         }
 
         if (PlayerPrefs.GetInt("won") == 1)
@@ -172,16 +165,6 @@ public class MainMenu : MonoBehaviour
         {
             debug.SetActive(false);
         }
-    }
-
-    public void ButtonEnter(TextMeshProUGUI text)
-    {
-        text.fontStyle = FontStyles.Underline;
-    }
-
-    public void ButtonExit(TextMeshProUGUI text)
-    {
-        text.fontStyle = FontStyles.Normal;
     }
 
     public void TitleChange(string textToShow)
