@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RaycastTest : MonoBehaviour
 {
-    void Update()
+    private void Update()
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
