@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using CustomAPI;
 
 public class Credits : MonoBehaviour
 {
@@ -9,13 +10,15 @@ public class Credits : MonoBehaviour
 
     IEnumerator Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        if (!CursorManager.cursorLocked)
+        {
+            CursorManager.Lock();
+        }
+
         PlayerPrefs.SetInt("won", 1);
         DontDestroyOnLoad(mus);
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
         SceneManager.LoadScene("MainMenu");
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        CursorManager.Unlock();
     }
 }

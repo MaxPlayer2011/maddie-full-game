@@ -29,8 +29,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        CustomAPI.CursorManager.Lock();
     }
 
     void Update()

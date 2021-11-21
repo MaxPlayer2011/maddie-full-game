@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using CustomAPI;
 using TMPro;
 
 public class DOS : MonoBehaviour
@@ -19,8 +20,7 @@ public class DOS : MonoBehaviour
     
     void Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        CursorManager.Lock();
     }
 
     void Update()
@@ -62,8 +62,7 @@ public class DOS : MonoBehaviour
                     screen = true;
                     textParent.SetActive(false);
                     errorMessage.SetActive(true);
-                    Cursor.visible = true;
-                    Cursor.lockState = CursorLockMode.None;
+                    CursorManager.Unlock();
                     am.CreateAchievement("DOS_Doors");
                 }
 
@@ -84,8 +83,7 @@ public class DOS : MonoBehaviour
                 secret.SetActive(false);
                 secretTxt.SetActive(false);
                 errorMessage.SetActive(false);
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
+                CursorManager.Lock();
             }
 
             if (!gameWantsToLaunch)

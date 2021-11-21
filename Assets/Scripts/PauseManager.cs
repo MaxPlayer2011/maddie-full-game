@@ -1,4 +1,5 @@
 using UnityEngine;
+using CustomAPI;
 
 public class PauseManager : MonoBehaviour
 {
@@ -6,7 +7,7 @@ public class PauseManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject optionsMenu;
 
-    void Update()
+    private void Update()
     {
         if (Input.GetButtonDown("Pause"))
         {
@@ -44,16 +45,14 @@ public class PauseManager : MonoBehaviour
         optionsMenu.SetActive(false);
         pauseMenu.SetActive(false);
         AudioListener.volume = 1f;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        CursorManager.Lock();
     }
 
-    void Pause()
+    private void Pause()
     {
         paused = true;
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        CursorManager.Unlock();
     }
 }

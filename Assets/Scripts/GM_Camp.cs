@@ -66,8 +66,7 @@ public class GM_Camp : MonoBehaviour
             Time.timeScale = 1f;
             SceneManager.LoadScene("MainMenu");
             PlayerPrefs.SetInt("FT_Won", 1);
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            CustomAPI.CursorManager.Unlock();
         }
     }
 

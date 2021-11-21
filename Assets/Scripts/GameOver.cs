@@ -47,8 +47,7 @@ public class GameOver : MonoBehaviour
         if (timeToQuit < 0f)
         {
             SceneManager.LoadScene("MainMenu");
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            CustomAPI.CursorManager.Unlock();
         }
     }
 }

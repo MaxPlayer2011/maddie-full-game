@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using CustomAPI;
 using TMPro;
 
 public class GM_Tut : MonoBehaviour
@@ -185,8 +186,7 @@ public class GM_Tut : MonoBehaviour
         Time.timeScale = 0f;
         AudioListener.pause = true;
         pauseMenu.SetActive(true);
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        CursorManager.Unlock();
     }
 
     public void Resume()
@@ -195,8 +195,7 @@ public class GM_Tut : MonoBehaviour
         Time.timeScale = 1f;
         AudioListener.pause = false;
         pauseMenu.SetActive(false);
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        CursorManager.Lock();
     }
 
     public IEnumerator Intro()

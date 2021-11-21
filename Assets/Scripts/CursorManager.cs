@@ -4,6 +4,14 @@ namespace CustomAPI
 {
     public static class CursorManager
     {
+        public static bool cursorLocked
+        {
+            get
+            {
+                return Cursor.lockState == CursorLockMode.Locked;
+            }
+        }
+        
         public static void Lock()
         {
             Cursor.visible = false;

@@ -36,7 +36,7 @@ public class QuizTut : MonoBehaviour
             title.text = "Q" + qNumber + ": What is " + num1 + " - " + num2 + "?";
         }
 
-        correct = Correct + "";
+        correct = Correct.ToString();
     }
 
     void Update()
