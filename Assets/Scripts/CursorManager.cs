@@ -1,25 +1,29 @@
 using UnityEngine;
 
-public class CursorManager : MonoBehaviour
+namespace CustomAPI
 {
-    public Texture2D normal;
-    public Texture2D click;
-    
-    void Start()
+    public static class CursorManager
     {
-        DontDestroyOnLoad(gameObject);
-    }
-
-    void Update()
-    {
-        if (Input.GetMouseButton(0))
+        public static void Lock()
         {
-            Cursor.SetCursor(click, Vector2.zero, CursorMode.Auto);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
-        else
+        public static void Unlock()
         {
-            Cursor.SetCursor(normal, Vector2.zero, CursorMode.Auto);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+
+        public static void ChangeCursor(Texture2D texture)
+        {
+            Cursor.SetCursor(texture, Vector2.zero, CursorMode.Auto);
+        }
+
+        public static void ResetCursor()
+        {
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         }
     }
 }

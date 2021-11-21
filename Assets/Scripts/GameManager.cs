@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using CustomAPI;
 
 public class GameManager : MonoBehaviour
 {
@@ -294,8 +295,7 @@ public class GameManager : MonoBehaviour
             }
 
             Time.timeScale = 1f;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            CursorManager.Lock();
         }
 
         bool allScrapButtonsAreFalse = true;
@@ -471,8 +471,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         hud.SetActive(false);
         scrapConnect.SetActive(true);
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        CursorManager.Unlock();
         scrapJoining = true;
     }
 
@@ -513,8 +512,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
         AudioListener.pause = false;
         AudioListener.volume = 1f;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        CursorManager.Unlock();
     }
 
     public void ButtonEnter(TextMeshProUGUI text)
