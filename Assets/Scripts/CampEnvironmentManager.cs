@@ -1,14 +1,16 @@
 using UnityEngine;
 
-public class WoodSpawnManager : MonoBehaviour
+public class CampEnvironmentManager : MonoBehaviour
 {
     private float spawnTime = 30f;
     public int stickCount;
+    public GameObject tree;
     public GameObject stick;
 
     private void Start()
     {
-        SpawnSticks();
+        Spawn(tree);
+        Spawn(stick);
     }
 
     private void Update()
@@ -22,13 +24,13 @@ public class WoodSpawnManager : MonoBehaviour
 
             if (spawnTime < 0f)
             {
-                SpawnSticks();
+                Spawn(stick);
                 spawnTime = Random.Range(30f, 50f);
             }
         }
     }
 
-    private void SpawnSticks()
+    private void Spawn(GameObject Object)
     {
         while (stickCount < 100)
         {
@@ -40,7 +42,7 @@ public class WoodSpawnManager : MonoBehaviour
                 continue;
             }
 
-            Instantiate(stick, new Vector3(spawnX, 5f, spawnZ), Quaternion.identity);
+            Instantiate(Object, new Vector3(spawnX, 5f, spawnZ), Quaternion.identity);
             stickCount++;
         }
     }
