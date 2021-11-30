@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Logo.unity
     guid: e28ea3a683905b54da987ed9e2ce6e75
   - enabled: 1
-    path: Assets/Scenes/FirstTime.unity
-    guid: 77c4bca4a935e4d45843c58565fa3190
-  - enabled: 1
     path: Assets/Scenes/Warning.unity
     guid: 8364e0884d8f3ad4e93317b9365ef605
   - enabled: 1
