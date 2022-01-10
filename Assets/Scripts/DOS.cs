@@ -14,88 +14,92 @@ public class DOS : MonoBehaviour
     public GameObject secret;
     public GameObject secretTxt;
     public GameObject errorMessage;
+    public GameObject drs95;
     public GameObject text;
     public TMP_InputField inputField;
     public AchievementManager am;
-    
-    void Start()
+    private AudioSource drs95Audio;
+    public AudioClip chimes;
+    public AudioClip ding;
+    public AudioClip tada;
+
+    private void Start()
     {
         CursorManager.Lock();
+        drs95Audio = drs95.GetComponentInChildren<AudioSource>();
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
             if (!screen)
             {
-                if (inputField.text.ToLower() == "maddie.exe")
+                switch (inputField.text.ToLower())
                 {
-                    gameWantsToLaunch = true;
-                    am.CreateAchievement("StartGame");
-                }
-
-                else if (inputField.text.ToLower() == "help")
-                {
-                    screen = true;
-                    textParent.SetActive(false);
-                    hintObject.SetActive(true);
-                }
-
-                else if (inputField.text.ToLower() == "secret.txt")
-                {
-                    screen = true;
-                    textParent.SetActive(false);
-                    secretTxt.SetActive(true);
-                }
-
-                else if (inputField.text.ToLower() == "secret.bat")
-                {
-                    screen = true;
-                    textParent.SetActive(false);
-                    secret.SetActive(true);
-                    am.CreateAchievement("DOS_Secret");
-                }
-
-                else if (inputField.text.ToLower() == "doors")
-                {
-                    screen = true;
-                    textParent.SetActive(false);
-                    errorMessage.SetActive(true);
-                    CursorManager.Unlock();
-                    am.CreateAchievement("DOS_Doors");
-                }
-
-                else
-                {
-                    screen = true;
-                    textParent.SetActive(false);
-                    badCommand.SetActive(true);
+                    case "maddie.exe":
+                        gameWantsToLaunch = true;
+                        am.CreateAchievement("StartGame");
+                        break;
+                    case "help":
+                        screen = true;
+                        textParent.SetActive(false);
+                        hintObject.SetActive(true);
+                        break;
+                    case "secret.txt":
+                        screen = true;
+                        textParent.SetActive(false);
+                        secretTxt.SetActive(true);
+                        break;
+                    case "secret.bat":
+                        screen = true;
+                        textParent.SetActive(false);
+                        secret.SetActive(true);
+                        am.CreateAchievement("DOS_Secret");
+                        break;
+                    case "doors":
+                        screen = true;
+                        textParent.SetActive(false);
+                        errorMessage.SetActive(true);
+                        am.CreateAchievement("DOS_Doors");
+                        break;
+                    case "doors --ignore dumbcrap.sys":
+                        screen = true;
+                        textParent.SetActive(false);
+                        drs95.SetActive(true);
+                        CursorManager.Unlock();
+                        am.CreateAchievement("DOS_Doors_Fix");
+                        drs95Audio.clip = chimes;
+                        drs95Audio.Play();
+                        break;
+                    default:
+                        screen = true;
+                        textParent.SetActive(false);
+                        badCommand.SetActive(true);
+                        break;
                 }
             }
 
             else
             {
-                screen = false;
-                textParent.SetActive(true);
-                hintObject.SetActive(false);
-                badCommand.SetActive(false);
-                secret.SetActive(false);
-                secretTxt.SetActive(false);
-                errorMessage.SetActive(false);
-                CursorManager.Lock();
+                if (!drs95.activeInHierarchy)
+                {
+                    screen = false;
+                    textParent.SetActive(true);
+                    hintObject.SetActive(false);
+                    badCommand.SetActive(false);
+                    secret.SetActive(false);
+                    secretTxt.SetActive(false);
+                    errorMessage.SetActive(false);
+                }
             }
 
             if (!gameWantsToLaunch)
-            {
                 inputField.text = null;
-            }
         }
-        
+
         if (!gameWantsToLaunch)
-        {
             inputField.Select();
-        }
 
         else
         {
@@ -105,8 +109,24 @@ public class DOS : MonoBehaviour
         }
 
         if (timeToLaunchGame < 0f)
-        {
             SceneManager.LoadScene("Logo");
-        }
+
+        if (Input.anyKeyDown & drs95.activeInHierarchy & !drs95Audio.isPlaying)
+            if (!(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)))
+                drs95Audio.PlayOneShot(ding);
+    }
+
+    public void ExitDoors95()
+    {
+        drs95Audio.PlayOneShot(tada);
+        screen = false;
+        textParent.SetActive(true);
+        hintObject.SetActive(false);
+        badCommand.SetActive(false);
+        secret.SetActive(false);
+        secretTxt.SetActive(false);
+        errorMessage.SetActive(false);
+        drs95.SetActive(false);
+        CursorManager.Lock();
     }
 }

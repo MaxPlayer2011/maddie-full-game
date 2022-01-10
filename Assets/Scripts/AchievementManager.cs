@@ -4,22 +4,12 @@ using TMPro;
 
 public class AchievementManager : MonoBehaviour
 {
-    private enum achieveType
-    {
-        StartGame,
-        BeatGame,
-        SecretLevel,
-        PassTut,
-        HardQ,
-        DOS_Secret,
-        DOS_Doors
-    };
     public Animator anim;
     public TextMeshProUGUI achieveText;
     public Image image;
     public Sprite[] achieveSprite;
 
-    void Start()
+    private void Start()
     {
         DontDestroyOnLoad(gameObject);
     }
@@ -28,46 +18,46 @@ public class AchievementManager : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("ACH_" + type) == 0)
         {
-            if (type == achieveType.StartGame.ToString())
+            switch (type)
             {
-                SpawnAchievement("\"Oh, Hello There!\"", "Start the game", achieveSprite[0]);
-            }
+                case "StartGame":
+                    SpawnAchievement("\"Oh, Hello There!\"", "Start the game", achieveSprite[0]);
+                    break;
 
-            else if (type == achieveType.BeatGame.ToString())
-            {
-                SpawnAchievement("Mmm, Cake!", "Beat the game", achieveSprite[1]);
-            }
+                case "BeatGame":
+                    SpawnAchievement("Mmm, Cake!", "Beat the game", achieveSprite[1]);
+                    break;
 
-            else if (type == achieveType.SecretLevel.ToString())
-            {
-                SpawnAchievement("What the hell is this?", "Get the secret ending", achieveSprite[2]);
-            }
+                case "SecretLevel":
+                    SpawnAchievement("What the hell is this?", "Get the secret ending", achieveSprite[2]);
+                    break;
 
-            else if (type == achieveType.PassTut.ToString())
-            {
-                SpawnAchievement("\"..will force you to listen to his crappy music for 5 seconds.\"", "Pass the tutorial", achieveSprite[3]);
-            }
+                case "PassTut":
+                    SpawnAchievement("\"..will force you to listen to his crappy music for 5 seconds.\"", "Pass the tutorial", achieveSprite[3]);
+                    break;
 
-            else if (type == achieveType.HardQ.ToString())
-            {
-                SpawnAchievement("Hey! This is impossible!", "Get the impossible question", achieveSprite[4]);
-            }
+                case "HardQ":
+                    SpawnAchievement("Hey! This is impossible!", "Get the impossible question", achieveSprite[4]);
+                    break;
 
-            else if (type == achieveType.DOS_Secret.ToString())
-            {
-                SpawnAchievement("It's so dark in here...", "Access \"SECRET.BAT\"", achieveSprite[5]);
-            }
+                case "DOS_Secret":
+                    SpawnAchievement("It's so dark in here...", "Access \"SECRET.BAT\"", achieveSprite[5]);
+                    break;
 
-            else if (type == achieveType.DOS_Doors.ToString())
-            {
-                SpawnAchievement("Doors 95? That sounds familiar...", "Open \"Doors 95\"", achieveSprite[6]);
+                case "DOS_Doors":
+                    SpawnAchievement("Doors 95? That sounds familiar...", "Open \"Doors 95\"", achieveSprite[6]);
+                    break;
+
+                case "DOS_Doors_Fix":
+                    SpawnAchievement("I don't care about \"DUMBCRAP\"! Just let me in!", "Open Doors 95 without getting an error", achieveSprite[7]);
+                    break;
             }
 
             PlayerPrefs.SetInt("ACH_" + type, 1);
         }
     }
 
-    void SpawnAchievement(string title, string text, Sprite sprite)
+    private void SpawnAchievement(string title, string text, Sprite sprite)
     {
         anim.Play("Spawn", -1, 0f);
         image.sprite = sprite;
