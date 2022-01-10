@@ -1,53 +1,43 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameOver : MonoBehaviour
 {
-    private float timeToQuit = 5f;
+    private string begginingText = "DOORS.APPLICATION.MADDIE.GAMEOVER.";
     public TextMeshProUGUI text;
-    public Image image;
-    public Sprite[] randomImages;
 
-    void Start()
+    private void Start()
     {
-        if (PlayerPrefs.GetString("GameOver") == "normal")
+        switch (PlayerPrefs.GetString("GameOver"))
         {
-            text.text = "Try better next time!";
+            case "normal":
+                text.text = begginingText + "NPC.MAD_MAD";
+                break;
+            case "bus":
+                text.text = begginingText + "GAMEOBJECT.BUS";
+                break;
+            case "gorilla":
+                text.text = begginingText + "NPC.GORILLA";
+                break;
+            case "student_stampede":
+                text.text = begginingText + "NPC.ANNOYING.STUPID_STUDENT_STAMPEDE";
+                break;
+            case "camp":
+                text.text = "Nice job! You got " + PlayerPrefs.GetInt("campPoints") + " points!";
+                break;
+            case "plane":
+                text.text = "Nice job! You got " + PlayerPrefs.GetInt("planePoints") + " points!";
+                break;
         }
-
-        else if (PlayerPrefs.GetString("GameOver") == "bus")
-        {
-            text.text = "Why did you get hit by that bus?!";
-        }
-
-        else if (PlayerPrefs.GetString("GameOver") == "gorilla")
-        {
-            text.text = "WHAT THE HELL?!?! A GORILLA?!?!";
-        }
-
-        else if (PlayerPrefs.GetString("GameOver") == "camp")
-        {
-            text.text = "Nice job! You got " + PlayerPrefs.GetInt("campPoints") + " points!";
-        }
-
-        else if (PlayerPrefs.GetString("GameOver") == "plane")
-        {
-            text.text = "Nice job! You got " + PlayerPrefs.GetInt("planePoints") + " points!";
-        }
-
-        image.sprite = randomImages[Random.Range(0, randomImages.Length)];
     }
 
-    void Update()
+    private void Update()
     {
-        timeToQuit -= Time.deltaTime;
-
-        if (timeToQuit < 0f)
+        if (Input.anyKeyDown)
         {
             SceneManager.LoadScene("MainMenu");
-            CustomAPI.CursorManager.Unlock();
+            GenericManagers.GUI.CursorManager.Unlock();
         }
     }
 }
