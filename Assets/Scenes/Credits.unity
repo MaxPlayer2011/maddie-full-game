@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -303,7 +303,7 @@ MonoBehaviour:
     Music</b>\n\nIntro\nHell\nLearning Horror\n\n<u>Inspired by</u> Baldi's Basics\n<u>Beginning
     Bird Texture</u> from Anim8or\n\n<u>Play Testers</u>\n\nMyst_Mystic (Adrian Zacios)\nmike3000
     (Michael Stryjek)\nAbdalluh123\n\n<u>Special Thanks To</u>\n\nAdrian Zacios\nMichael
-    Stryjek\nOleg Naumov\nAndrew Furletov\n\n\n<b>Thanks for playing!</b>\n\n\xA92021
+    Stryjek\nOleg Naumov\nAndrew Furletov\n\n\n<b>Thanks for playing!</b>\n\n\xA92022
     gameZ Productions. All rights reserved."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b65a7b3eb49363848a744cf0117d982b, type: 2}
