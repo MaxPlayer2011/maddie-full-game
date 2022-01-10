@@ -4,7 +4,6 @@ using TMPro;
 public class MacTextFix : MonoBehaviour
 {
     public TMP_FontAsset font;
-    public TMP_FontAsset excludedFont;
     
     private void Start()
     {
@@ -22,7 +21,7 @@ public class MacTextFix : MonoBehaviour
 
         foreach (var component in textComponents)
         {
-            if (component.font == excludedFont)
+            if (component.font.atlasRenderMode == UnityEngine.TextCore.LowLevel.GlyphRenderMode.SDF)
             {
                 component.font = font;
             }
