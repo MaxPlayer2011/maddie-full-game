@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -413,7 +413,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 345200321}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b761a3a68ddc14454b044b3309935486, type: 3}
+  m_Script: {fileID: 11500000, guid: cf85b17d4eb129e46aa19fde12a09307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1370048208}
@@ -962,17 +962,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'A fatal exception 0E has occurred at NULL in MADDIE.EXE. The current appliction
-    will be terminated.
+  m_text: 'A fatal exception 0A has occurred at 506C61796572 in MADDIE.EXE. The current
+    application will be terminated.
 
 
-    * Press any key to ternimate the appliction.
+    * Press any key to terminate the application.
 
     *
     Do not press CTRL+ALT+DEL.
 
 
-    Press any key to continue.'
+    Press any key to continue_'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e61c5c2bb5e794aa0a931feb3ebacb59, type: 2}
   m_sharedMaterial: {fileID: -7426190982239599457, guid: e61c5c2bb5e794aa0a931feb3ebacb59, type: 2}
