@@ -5,7 +5,7 @@ using GenericManagers.GUI;
 
 public class Logo : MonoBehaviour
 {
-    IEnumerator Start()
+    private IEnumerator Start()
     {
         if (!CursorManager.cursorLocked)
         {
@@ -16,7 +16,7 @@ public class Logo : MonoBehaviour
         SceneManager.LoadScene("Warning");
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetButtonDown("Skip Logo"))
         {
