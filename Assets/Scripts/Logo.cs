@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using CustomAPI;
+using GenericManagers.GUI;
 
 public class Logo : MonoBehaviour
 {

@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using GenericManagers;
 
 public class PRI : MonoBehaviour
 {

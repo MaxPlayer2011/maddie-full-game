@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using GenericManagers;
 
 public class MaddieCamp : MonoBehaviour
 {

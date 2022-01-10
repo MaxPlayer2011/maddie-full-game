@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using CustomAPI;
+using GenericManagers.GUI;
 using TMPro;
 
 public class DOS : MonoBehaviour

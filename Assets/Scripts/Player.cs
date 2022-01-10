@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        CustomAPI.CursorManager.Lock();
+        GenericManagers.GUI.CursorManager.Lock();
     }
 
     void Update()

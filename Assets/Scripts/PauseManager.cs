@@ -1,5 +1,5 @@
 using UnityEngine;
-using CustomAPI;
+using GenericManagers.GUI;
 
 public class PauseManager : MonoBehaviour
 {

@@ -1,4 +1,5 @@
 using UnityEngine;
+using GenericManagers;
 
 public class ScrapTut : MonoBehaviour
 {

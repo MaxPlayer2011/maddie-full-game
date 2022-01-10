@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using CustomAPI;
+using GenericManagers.GUI;
 
 public class GM_Won2 : MonoBehaviour
 {

@@ -8,7 +8,7 @@ public class Warning : MonoBehaviour
         if (Input.anyKeyDown)
         {
             SceneManager.LoadScene("MainMenu");
-            CustomAPI.CursorManager.Unlock();
+            GenericManagers.GUI.CursorManager.Unlock();
         }
     }
 }

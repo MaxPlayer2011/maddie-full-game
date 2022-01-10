@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CustomAPI
+namespace GenericManagers.GUI
 {
     public static class CursorManager
     {
