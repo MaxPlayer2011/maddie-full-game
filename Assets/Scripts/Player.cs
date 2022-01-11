@@ -26,13 +26,13 @@ public class Player : MonoBehaviour
     public Slider stamina;
     public GameObject rest;
 
-    void Start()
+    private void Start()
     {
         controller = GetComponent<CharacterController>();
         GenericManagers.GUI.CursorManager.Lock();
     }
 
-    void Update()
+    private void Update()
     {
         mouseSensitivity = PlayerPrefs.GetFloat("mouseSensitivity");
 
@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (mainGame == true)
+        if (mainGame)
         {
             if (timeToCrazy > 0f & spooky)
             {
@@ -143,7 +143,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Move()
+    private void Move()
     {
         if (rap == false)
         {
@@ -157,13 +157,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Look()
+    private void Look()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         transform.Rotate(Vector3.up * mouseX);
     }
 
-    void Sprint()
+    private void Sprint()
     {
         if (stamina.value > 0)
         {
