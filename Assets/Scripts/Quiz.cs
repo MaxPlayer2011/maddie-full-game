@@ -13,6 +13,7 @@ public class Quiz : MonoBehaviour
     public string correct;
     private GameManager gm;
     private AudioSource audioSource;
+    public AudioClip musicEnd;
     public TextMeshProUGUI title;
     public TMP_InputField answer;
     public GameObject next;
@@ -22,7 +23,7 @@ public class Quiz : MonoBehaviour
     public GameObject spooky;
     public GameObject dark;
 
-    void Start()
+    private void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         audioSource = GetComponentInParent<AudioSource>();
@@ -53,7 +54,7 @@ public class Quiz : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         answer.Select();
 
@@ -120,6 +121,9 @@ public class Quiz : MonoBehaviour
                             timeToDark = 0.05f;
                             spooky.SetActive(true);
                             title.text = "Q4: <b>DIE</b>";
+                            GetComponentInParent<MIDI_Loop_Controller>().enabled = false;
+                            audioSource.clip = musicEnd;
+                            audioSource.Play();
                         }
                     }
                 }
@@ -148,7 +152,7 @@ public class Quiz : MonoBehaviour
         }
     }
 
-    void DestroyMathGame()
+    private void DestroyMathGame()
     {
         Time.timeScale = 1f;
         gm.playerScript.stamina.value = 100f;
