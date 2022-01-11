@@ -45,6 +45,7 @@ namespace GenericManagers
         public AudioClip LIGHTS_TURN_OFF;
         public AudioClip[] nineScraps;
         public AudioClip exitReached;
+        public AudioClip finaleIntro;
         public AudioClip LOUD;
         public AudioClip[] deathClips;
         private AudioClip currentDeathClip;
@@ -419,6 +420,7 @@ namespace GenericManagers
         public void Finale()
         {
             StartCoroutine(FinaleAudio());
+            StartCoroutine(FinaleIntro());
             entrances.transform.position = new Vector3(0f, 10f, 0f);
         }
 
@@ -439,6 +441,15 @@ namespace GenericManagers
             finaleAudio.clip = nineScraps[3];
             finaleAudio.Play();
             finaleAudioSubtitles.text.text = "<b>GET YOUR STUPID ASS OUT OF THIS STUPID SCHOOL! JUST... UGHHH! GOD!</b>";
+        }
+
+        private IEnumerator FinaleIntro()
+        {
+            audioSource.Stop();
+            yield return new WaitForSeconds(finaleIntro.length);
+            audioSource.clip = finaleIntro;
+            audioSource.volume = 1f;
+            audioSource.Play();
         }
 
         public void ExitReached()
