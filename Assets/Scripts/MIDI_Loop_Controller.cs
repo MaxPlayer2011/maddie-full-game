@@ -14,24 +14,24 @@ public class MIDI_Loop_Controller : MonoBehaviour
     }
     public musicTypeType musicType;
 
-    void Start()
+    private void Start()
     {
         audioSource = GetComponent<AudioSource>();
 
-        if (musicType == musicTypeType.Hell)
+        switch (musicType)
         {
-            midiLength = 3.875f;
-        }
-
-        else if (musicType == musicTypeType.LearningHorror)
-        {
-            midiLength = 4f;
+            case musicTypeType.Hell:
+                midiLength = 3.875f;
+                break;
+            case musicTypeType.LearningHorror:
+                midiLength = 4f;
+                break;
         }
 
         timeToPlay = midiLength;
     }
 
-    void Update()
+    private void Update()
     {
         if (audioSource.isPlaying)
         {
