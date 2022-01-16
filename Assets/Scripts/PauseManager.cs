@@ -11,7 +11,7 @@ public class PauseManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Pause"))
         {
-            if (paused == true)
+            if (paused)
             {
                 Resume();
             }
@@ -22,12 +22,12 @@ public class PauseManager : MonoBehaviour
             }
         }
 
-        if (paused == true & AudioListener.volume > 0f)
+        if (paused & AudioListener.volume > 0f)
         {
             AudioListener.volume -= Time.unscaledDeltaTime * 3f;
         }
 
-        if (paused == true & AudioListener.volume < 0f)
+        if (paused & AudioListener.volume < 0f)
         {
             AudioListener.pause = true;
         }
