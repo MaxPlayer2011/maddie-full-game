@@ -420,7 +420,6 @@ namespace GenericManagers
         public void Finale()
         {
             StartCoroutine(FinaleAudio());
-            StartCoroutine(FinaleIntro());
             entrances.transform.position = new Vector3(0f, 10f, 0f);
         }
 
@@ -455,13 +454,13 @@ namespace GenericManagers
         public void ExitReached()
         {
             exitsReached += 1;
-            audioSource.PlayOneShot(exitReached);
 
             if (exitsReached == 1)
             {
                 RenderSettings.ambientLight = Color.red;
                 RenderSettings.fogColor = finalFogColor;
                 flashlight.SetActive(false);
+                StartCoroutine(FinaleIntro());
             }
 
             else if (exitsReached == 2)
@@ -469,6 +468,8 @@ namespace GenericManagers
                 audioSource.clip = LOUD;
                 audioSource.Play();
             }
+
+            audioSource.PlayOneShot(exitReached);
         }
 
         public void TeleportPlayer(Vector3 position, Quaternion rotation)
