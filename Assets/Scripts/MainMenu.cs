@@ -23,7 +23,7 @@ public class MainMenu : MonoBehaviour
     public Sprite wonScreen;
     public FPSCounter fps;
 
-    void Start()
+    private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         slider.value = PlayerPrefs.GetFloat("mouseSensitivity");
@@ -40,24 +40,16 @@ public class MainMenu : MonoBehaviour
 
         versionText.text = "V" + Application.version;
 
-        if (PlayerPrefs.GetString("lang") == "eng")
+        switch (PlayerPrefs.GetString("lang"))
         {
-            langValue = 0;
-        }
-
-        else if (PlayerPrefs.GetString("lang") == "rus")
-        {
-            langValue = 3;
-        }
-
-        else if (PlayerPrefs.GetString("lang") == "pol")
-        {
-            langValue = 2;
-        }
-
-        else if (PlayerPrefs.GetString("lang") == "span")
-        {
-            langValue = 1;
+            case "eng": langValue = 0;
+                break;
+            case "rus": langValue = 3;
+                break;
+            case "pol": langValue = 2;
+                break;
+            case "span": langValue = 1;
+                break;
         }
 
         lang.value = langValue;
@@ -85,9 +77,9 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
-        if (reseting == true)
+        if (reseting)
         {
             PlayerPrefs.DeleteAll();
         }
@@ -96,7 +88,7 @@ public class MainMenu : MonoBehaviour
         {
             PlayerPrefs.SetFloat("mouseSensitivity", slider.value);
 
-            if (subtitleToggle.isOn == true)
+            if (subtitleToggle.isOn)
             {
                 PlayerPrefs.SetInt("subtitle", 1);
             }
@@ -106,28 +98,24 @@ public class MainMenu : MonoBehaviour
                 PlayerPrefs.SetInt("subtitle", 0);
             }
 
-            if (lang.value == 0)
+            switch (lang.value)
             {
-                PlayerPrefs.SetString("lang", "eng");
-                langText.text = "LANGUAGE";
-            }
-
-            else if (lang.value == 3)
-            {
-                PlayerPrefs.SetString("lang", "rus");
-                langText.text = "ЯЗЫК";
-            }
-
-            else if (lang.value == 2)
-            {
-                PlayerPrefs.SetString("lang", "pol");
-                langText.text = "JĘZYK";
-            }
-
-            else if (lang.value == 1)
-            {
-                PlayerPrefs.SetString("lang", "span");
-                langText.text = "IDIOMA";
+                case 0:
+                    PlayerPrefs.SetString("lang", "eng");
+                    langText.text = "LANGUAGE";
+                    break;
+                case 3:
+                    PlayerPrefs.SetString("lang", "rus");
+                    langText.text = "ЯЗЫК";
+                    break;
+                case 2:
+                    PlayerPrefs.SetString("lang", "pol");
+                    langText.text = "JĘZYK";
+                    break;
+                case 1:
+                    PlayerPrefs.SetString("lang", "span");
+                    langText.text = "IDIOMA";
+                    break;
             }
 
             if (Input.GetKeyDown(KeyCode.BackQuote))
@@ -146,7 +134,7 @@ public class MainMenu : MonoBehaviour
 
         debugText.text = "DEBUG\nUnity Version: " + Application.unityVersion + ",\nFPS: " + fps.m_CurrentFps + ",\nTo disable debug, click \"~\"";
 
-        if (mainScreen.activeInHierarchy == true)
+        if (mainScreen.activeInHierarchy)
         {
             mainMenuFullScreen.SetActive(true);
         }
@@ -189,7 +177,11 @@ public class MainMenu : MonoBehaviour
 
     public void Quit()
     {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
         Application.Quit();
+#endif
     }
 
     public void ExitChangelog()
