@@ -6,7 +6,12 @@ public class MenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 {
     private bool mouseOverButton;
     private TextMeshProUGUI text;
-    
+
+    private void OnEnable()
+    {
+        mouseOverButton = false;
+    }
+
     private void Start()
     {
         text = GetComponentInChildren<TextMeshProUGUI>();
@@ -15,17 +20,11 @@ public class MenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private void Update()
     {
         if (EventSystem.current.currentSelectedGameObject == gameObject)
-        {
             text.fontStyle = FontStyles.Underline;
-        }
 
         else
-        {
-            if (mouseOverButton == false)
-            {
+            if (!mouseOverButton)
                 text.fontStyle = FontStyles.Normal;
-            }
-        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -38,5 +37,10 @@ public class MenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         mouseOverButton = false;
         text.fontStyle = FontStyles.Normal;
+    }
+
+    public void SetFontStyleToNormal()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
     }
 }
