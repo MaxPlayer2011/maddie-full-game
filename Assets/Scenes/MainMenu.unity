@@ -7855,7 +7855,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 308, y: 109.61}
+  m_SizeDelta: {x: 308, y: 578.77}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &995132046
 MonoBehaviour:
@@ -7882,7 +7882,27 @@ MonoBehaviour:
     <u>CHANGELOG</u>
 
 
-    <i>this is a test'
+    -Added more easter eggs.
+
+    -Improved
+    code.
+
+    -Fixed up the credits.
+
+    -Added a new obstacle called "Student
+    Stampede".
+
+    -When you get the first exit, there is now different ambience.
+
+    -Added
+    a music "ending" when you get a question wrong in the math game.
+
+    -Fixed
+    buttons still being underlined when clicked (for example, a "back" button would
+    stay underlined if you come to that menu again).
+
+    -Added back the changelog
+    menu in the game.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e50ac66cfef6456448712925d9514ade, type: 2}
   m_sharedMaterial: {fileID: -9069644896615961332, guid: e50ac66cfef6456448712925d9514ade, type: 2}
@@ -10636,8 +10656,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1478151052}
   m_HandleRect: {fileID: 1478151051}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1.0000004
+  m_Size: 0.66174823
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -11394,7 +11414,7 @@ RectTransform:
   m_Father: {fileID: 1489975789}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.33825177}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
