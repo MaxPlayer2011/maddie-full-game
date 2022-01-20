@@ -20,11 +20,13 @@ public class Player : MonoBehaviour
     public bool guilty;
     public bool detention;
     public bool energetic;
+    public bool squished;
     public string guilt;
     public Camera Camera;
     private CharacterController controller;
     public Slider stamina;
     public GameObject rest;
+    public Vector3 stampedeSquishPos;
 
     private void Start()
     {
@@ -36,7 +38,7 @@ public class Player : MonoBehaviour
     {
         mouseSensitivity = PlayerPrefs.GetFloat("mouseSensitivity");
 
-        if (Time.timeScale > 0f)
+        if (Time.timeScale > 0f & !squished)
         {
             Move();
             Look();
@@ -140,6 +142,16 @@ public class Player : MonoBehaviour
         {
             walkSpeed = default_walkSpeed;
             sprintSpeed = default_sprintSpeed;
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (squished)
+        {
+            transform.position = stampedeSquishPos;
+            transform.localRotation = Quaternion.Euler(-90, 0, 0);
+            Camera.transform.position = transform.position;
         }
     }
 

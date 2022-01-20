@@ -20,7 +20,7 @@ public class GameOver : MonoBehaviour
             case "gorilla":
                 text.text = begginingText + "NPC.GORILLA";
                 break;
-            case "student_stampede":
+            case "stampede":
                 text.text = begginingText + "NPC.ANNOYING.STUPID_STUDENT_STAMPEDE";
                 break;
             case "camp":

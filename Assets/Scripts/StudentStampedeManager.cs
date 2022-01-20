@@ -5,16 +5,30 @@ namespace GenericManagers
     public class StudentStampedeManager : MonoBehaviour
     {
         public float timeToSpawn;
-        public GameObject prefab;
-        
+        private AudioSource audioSource;
+        public Transform[] spawnPoints;
+        public GameObject stampede;
+
         private void Start()
         {
-            timeToSpawn = Random.Range(45, 90);
+            audioSource = GetComponent<AudioSource>();
         }
 
         private void Update()
         {
+            if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().spooky)
+                timeToSpawn -= Time.deltaTime;
 
+            if (timeToSpawn < 0f)
+            {
+                timeToSpawn = Random.Range(120, 180);
+
+                int spawnPoint = Random.Range(0, spawnPoints.Length);
+                Instantiate(stampede, new Vector3(spawnPoints[spawnPoint].position.x, 5, spawnPoints[spawnPoint].position.z), spawnPoints[spawnPoint].localRotation);
+            }
+
+            if (timeToSpawn <= audioSource.clip.length & !audioSource.isPlaying)
+                audioSource.Play();
         }
     }
 }

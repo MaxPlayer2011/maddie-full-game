@@ -158,7 +158,7 @@ namespace GenericManagers
                 Spooky();
             }
 
-            if (!gameOver & !learning & !scrapJoining)
+            if (!gameOver & !learning & !scrapJoining & !playerScript.squished)
             {
                 pm.enabled = true;
             }

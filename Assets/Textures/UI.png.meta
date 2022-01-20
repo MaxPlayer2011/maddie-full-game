@@ -73,19 +73,19 @@ TextureImporter:
     second: doors95
   - first:
       213: 9084407170249120912
-    second: DEAD_01
+    second: student1
   - first:
       213: -4464969597253999955
-    second: UI_24
+    second: student2
   - first:
       213: -7543061489181569089
-    second: UI_25
+    second: student3
   - first:
       213: -3947773304791079134
-    second: UI_26
+    second: student4
   - first:
       213: -7867266084347359734
-    second: UI_27
+    second: student5
   - first:
       213: 3787343402263556702
     second: UI_28
@@ -1163,6 +1163,111 @@ TextureImporter:
       bones: []
       spriteID: ed59e9a27ec2e4300800000000000000
       internalID: 238177201661318622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: student1
+      rect:
+        serializedVersion: 2
+        x: 2221
+        y: 4048
+        width: 33
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09cd5b9a03c421e70800000000000000
+      internalID: 9084407170249120912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: student2
+      rect:
+        serializedVersion: 2
+        x: 2255
+        y: 4040
+        width: 47
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da2a1c6cecd3902c0800000000000000
+      internalID: -4464969597253999955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: student3
+      rect:
+        serializedVersion: 2
+        x: 2303
+        y: 4038
+        width: 61
+        height: 58
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbf476a5a89a15790800000000000000
+      internalID: -7543061489181569089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: student4
+      rect:
+        serializedVersion: 2
+        x: 2365
+        y: 4034
+        width: 64
+        height: 62
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22768227811b639c0800000000000000
+      internalID: -3947773304791079134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: student5
+      rect:
+        serializedVersion: 2
+        x: 2430
+        y: 4034
+        width: 55
+        height: 62
+      alignment: 9
+      pivot: {x: 0.31, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0e4ff8cd2bd1d290800000000000000
+      internalID: -7867266084347359734
       vertices: []
       indices: 
       edges: []
