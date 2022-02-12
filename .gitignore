@@ -5,6 +5,7 @@ Assets/TextMesh Pro.meta
 Library
 Logs
 obj
+Packages/packages-lock.json
 Temp
 UserSettings
 Assembly-CSharp.csproj
