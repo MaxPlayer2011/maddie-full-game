@@ -185,7 +185,7 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        if (rap == false)
+        if (!rap)
         {
             float x = Input.GetAxisRaw("Horizontal");
             float z = Input.GetAxisRaw("Vertical");
