@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078852969e18c734185a6ba799d875be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentSpeed: 0
   walkSpeed: 8
   sprintSpeed: 16
   default_walkSpeed: 8
@@ -78,11 +79,13 @@ MonoBehaviour:
   guilty: 0
   detention: 0
   energetic: 0
+  squished: 0
   cameraShaking: 0
   guilt: 
   Camera: {fileID: 3839192695551939341}
   stamina: {fileID: 0}
   rest: {fileID: 0}
+  stampedeSquishPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1681293536832562618
 GameObject:
   m_ObjectHideFlags: 0
