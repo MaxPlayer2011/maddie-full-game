@@ -78,10 +78,12 @@ MonoBehaviour:
   guilty: 0
   detention: 0
   energetic: 0
+  cameraShaking: 0
   guilt: 
   Camera: {fileID: 3839192695551939341}
   stamina: {fileID: 0}
   rest: {fileID: 0}
+  stampedeManager: {fileID: 0}
 --- !u!1 &1681293536832562618
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,6 +95,7 @@ GameObject:
   - component: {fileID: 389954084730327615}
   - component: {fileID: 3839192695551939341}
   - component: {fileID: 2642376512478884976}
+  - component: {fileID: 2241972039475385599}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -166,6 +169,25 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681293536832562618}
   m_Enabled: 1
+--- !u!95 &2241972039475385599
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681293536832562618}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 17b6dc151bd6307498acc6f24be04cfd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4958310678281577568
 GameObject:
   m_ObjectHideFlags: 0

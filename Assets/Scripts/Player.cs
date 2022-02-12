@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using GenericManagers;
 
 public class Player : MonoBehaviour
 {
@@ -21,17 +22,26 @@ public class Player : MonoBehaviour
     public bool detention;
     public bool energetic;
     public bool squished;
+    public bool cameraShaking;
     public string guilt;
     public Camera Camera;
     private CharacterController controller;
+    private Animator animator;
     public Slider stamina;
     public GameObject rest;
+    private StudentStampedeManager stampedeManager;
     public Vector3 stampedeSquishPos;
 
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        animator = GetComponentInChildren<Animator>();
         GenericManagers.GUI.CursorManager.Lock();
+
+        if (mainGame)
+        {
+            stampedeManager = GameObject.FindGameObjectWithTag("StudentStampedeManager").GetComponent<StudentStampedeManager>();
+        }
     }
 
     private void Update()
@@ -102,6 +112,24 @@ public class Player : MonoBehaviour
             else
             {
                 rest.SetActive(false);
+            }
+
+            if (stampedeManager.stampedeActive)
+            {
+                if (!cameraShaking)
+                {
+                    cameraShaking = true;
+                    animator.Play("CameraShake");
+                }
+            }
+
+            else
+            {
+                if (cameraShaking)
+                {
+                    cameraShaking = false;
+                    animator.Play("Empty");
+                }
             }
         }
 

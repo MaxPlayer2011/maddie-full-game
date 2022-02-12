@@ -12,6 +12,7 @@ TagManager:
   - Soda
   - Bully
   - ACH_Canvas
+  - StudentStampedeManager
   layers:
   - Default
   - TransparentFX
