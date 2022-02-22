@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         GenericManagers.GUI.CursorManager.Lock();
 
-        if (mainGame)
+        if (GameObject.FindGameObjectWithTag("StudentStampedeManager") != null)
         {
             stampedeManager = GameObject.FindGameObjectWithTag("StudentStampedeManager").GetComponent<StudentStampedeManager>();
         }
@@ -114,21 +114,24 @@ public class Player : MonoBehaviour
                 rest.SetActive(false);
             }
 
-            if (stampedeManager.stampedeActive)
+            if (stampedeManager != null)
             {
-                if (!cameraShaking)
+                if (stampedeManager.stampedeActive)
                 {
-                    cameraShaking = true;
-                    animator.Play("CameraShake");
+                    if (!cameraShaking)
+                    {
+                        cameraShaking = true;
+                        animator.Play("CameraShake");
+                    }
                 }
-            }
 
-            else
-            {
-                if (cameraShaking)
+                else
                 {
-                    cameraShaking = false;
-                    animator.Play("Empty");
+                    if (cameraShaking)
+                    {
+                        cameraShaking = false;
+                        animator.Play("Empty");
+                    }
                 }
             }
         }
