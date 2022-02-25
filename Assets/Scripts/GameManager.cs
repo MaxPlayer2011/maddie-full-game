@@ -248,7 +248,7 @@ namespace GenericManagers
 
                 if (!Event & timeToStartEvent < 0f)
                 {
-                    StartEvent(Random.Range(1, 1));
+                    StartEvent(Random.Range(0, 0));
                 }
 
                 if (Event & timeToStopEvent > 0f)
@@ -497,12 +497,14 @@ namespace GenericManagers
         private void StartEvent(int id)
         {
             Event = true;
-            timeToStopEvent = Random.Range(60, 120);
+            timeToStopEvent = Random.Range(30, 45);
 
-            if (id == 1)
+            switch (id)
             {
-                waterEvent = true;
-                water.SetActive(true);
+                case 0:
+                    waterEvent = true;
+                    water.SetActive(true);
+                    break;
             }
         }
 
