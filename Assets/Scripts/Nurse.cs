@@ -15,18 +15,17 @@ public class Nurse : MonoBehaviour
     public AudioClip hallucination;
     public AudioClip[] fix;
     public AudioClip[] done;
-    private AudioClip currentRandomClip;
     private NavMeshAgent agent;
     public Transform[] wanderPoints;
     public Player player;
     public Door door;
-    private Subtitle dialogeSystem;
+    private AudioQueueManager audioQueue;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
-        dialogeSystem = GetComponent<Subtitle>();
+        audioQueue = gameObject.AddComponent<AudioQueueManager>();
         Wander();
     }
     
@@ -40,9 +39,9 @@ public class Nurse : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") & helping == false & inOffice == true & player.crazy == true)
+        if (other.CompareTag("Player") & !helping & inOffice & player.crazy)
         {
-            StartCoroutine("Help");
+            StartCoroutine(Help());
         }
     }
 
@@ -53,33 +52,23 @@ public class Nurse : MonoBehaviour
 
     IEnumerator Help()
     {
+        int randomNumberProblem = Random.Range(0, problem.Length);
+        int randomNumberFix = Random.Range(0, fix.Length);
+        int randomNumberDone = Random.Range(0, done.Length);
+
         helping = true;
         agent.isStopped = true;
-        door.enabled = false;
-        audioSource.PlayOneShot(hello);
-        dialogeSystem.text.text = "Hello";
-        yield return new WaitForSeconds(hello.length);
-        int randomNumberProblem = Random.Range(0, problem.Length);
-        currentRandomClip = problem[randomNumberProblem];
-        audioSource.PlayOneShot(currentRandomClip);
-        dialogeSystem.text.text = problemText[randomNumberProblem];
-        yield return new WaitForSeconds(currentRandomClip.length);
-        audioSource.PlayOneShot(hallucination);
-        dialogeSystem.text.text = "Hallucination!";
-        yield return new WaitForSeconds(hallucination.length);
-        int randomNumberFix = Random.Range(0, fix.Length);
-        currentRandomClip = fix[randomNumberFix];
-        audioSource.PlayOneShot(currentRandomClip);
-        dialogeSystem.text.text = fixText[randomNumberFix];
-        yield return new WaitForSeconds(currentRandomClip.length + 5f);
-        int randomNumberDone = Random.Range(0, done.Length);
-        currentRandomClip = done[randomNumberDone];
-        audioSource.PlayOneShot(currentRandomClip);
-        dialogeSystem.text.text = doneText[randomNumberDone];
-        yield return new WaitForSeconds(currentRandomClip.length);
+        door.locked = true;
+        audioQueue.Queue(hello, "Hello");
+        audioQueue.Queue(problem[randomNumberProblem], problemText[randomNumberProblem]);
+        audioQueue.Queue(hallucination, "Hallucination!");
+        audioQueue.Queue(fix[randomNumberFix], fixText[randomNumberFix]);
+        yield return new WaitForSeconds(hello.length + problem[randomNumberProblem].length + hallucination.length + fix[randomNumberFix].length + 5f);
+        audioQueue.Queue(done[randomNumberDone], doneText[randomNumberDone]);
+        yield return new WaitForSeconds(fix[randomNumberDone].length);
         helping = false;
         agent.isStopped = false;
-        door.enabled = true;
+        door.locked = false;
         player.timeToCrazy = Random.Range(300f, 420f);
     }
 }
