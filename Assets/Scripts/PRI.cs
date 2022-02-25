@@ -191,6 +191,7 @@ public class PRI : MonoBehaviour
     public void Distract()
     {
         busy = true;
+        audioSource.Stop();
         timeToNormal = 30f;
         timeToGetAngry = 0.5f;
         angry = false;
