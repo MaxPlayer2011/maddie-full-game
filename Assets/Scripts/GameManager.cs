@@ -89,6 +89,7 @@ namespace GenericManagers
         public GameObject water;
         public GameObject scrapConnect;
         public GameObject scrapFull;
+        public GameObject crazyCanvas;
         public GameObject[] scrapButton;
         public Slider mouseSensitivity;
         public Toggle subtitleToggle;
@@ -285,6 +286,18 @@ namespace GenericManagers
             {
                 maddieScript.antiHearing = false;
                 printer.Stop();
+            }
+
+            if (playerScript.crazy & !crazyCanvas.activeSelf)
+            {
+                audioSource.pitch = -1f;
+                crazyCanvas.SetActive(true);
+            }
+
+            else if (!playerScript.crazy & crazyCanvas.activeSelf)
+            {
+                audioSource.pitch = 1f;
+                crazyCanvas.SetActive(false);
             }
 
             if (Input.GetKeyDown(KeyCode.Return) & allScrapsJoined)

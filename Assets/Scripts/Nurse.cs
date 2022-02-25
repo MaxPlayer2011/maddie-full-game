@@ -31,13 +31,13 @@ public class Nurse : MonoBehaviour
     
     void Update()
     {
-        if (agent.remainingDistance < 1)
+        if (agent.remainingDistance < 1 & !helping)
         {
-            Wander();
+            StartCoroutine(Wander());
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player") & !helping & inOffice & player.crazy)
         {
@@ -45,8 +45,9 @@ public class Nurse : MonoBehaviour
         }
     }
 
-    void Wander()
+    IEnumerator Wander()
     {
+        yield return new WaitForSeconds(60f);
         agent.SetDestination(wanderPoints[Random.Range(0, wanderPoints.Length)].position);
     }
 
@@ -65,10 +66,10 @@ public class Nurse : MonoBehaviour
         audioQueue.Queue(fix[randomNumberFix], fixText[randomNumberFix]);
         yield return new WaitForSeconds(hello.length + problem[randomNumberProblem].length + hallucination.length + fix[randomNumberFix].length + 5f);
         audioQueue.Queue(done[randomNumberDone], doneText[randomNumberDone]);
+        player.timeToCrazy = Random.Range(300f, 420f);
         yield return new WaitForSeconds(fix[randomNumberDone].length);
         helping = false;
         agent.isStopped = false;
         door.locked = false;
-        player.timeToCrazy = Random.Range(300f, 420f);
     }
 }
