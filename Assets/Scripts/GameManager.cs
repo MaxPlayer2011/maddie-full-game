@@ -38,7 +38,7 @@ namespace GenericManagers
         private AudioSource audioSource;
         public AudioSource scareAudio;
         public AudioSource preScareAudio;
-        public AudioSource finaleAudio;
+        public GameObject finaleAudio;
         public AudioClip MUS_default;
         public AudioClip MUS_spooky;
         public AudioClip ANGRY;
@@ -49,6 +49,7 @@ namespace GenericManagers
         public AudioClip LOUD;
         public AudioClip[] deathClips;
         private AudioClip currentDeathClip;
+        private AudioQueueManager maddieAudioQueue;
         public Transform player;
         [HideInInspector]
         public Player playerScript;
@@ -103,6 +104,7 @@ namespace GenericManagers
             audioSource.volume = 0.5f;
             audioSource.Play();
             currentDeathClip = deathClips[Random.Range(0, deathClips.Length)];
+            maddieAudioQueue = finaleAudio.AddComponent<AudioQueueManager>();
             mouseSensitivity.value = PlayerPrefs.GetFloat("mouseSensitivity");
 
             if (currentDeathClip != deathClips[0])
@@ -419,27 +421,11 @@ namespace GenericManagers
 
         public void Finale()
         {
-            StartCoroutine(FinaleAudio());
+            maddieAudioQueue.Queue(nineScraps[0], "CONGRATULATIONS!");
+            maddieAudioQueue.Queue(nineScraps[1], "YOU HAVE SOLVED ALL OF MY MATH PROBLEMS!");
+            maddieAudioQueue.Queue(nineScraps[2], "TRY, IF YOU CAN, IF YOU STILL CAN, TO...");
+            maddieAudioQueue.Queue(nineScraps[3], "<b>GET YOUR STUPID ASS OUT OF THIS STUPID SCHOOL! JUST... UGHHH! GOD!</b>");
             entrances.transform.position = new Vector3(0f, 10f, 0f);
-        }
-
-        private IEnumerator FinaleAudio()
-        {
-            finaleAudio.clip = nineScraps[0];
-            finaleAudio.Play();
-            finaleAudioSubtitles.text.text = "CONGRATULATIONS!";
-            yield return new WaitForSeconds(nineScraps[0].length);
-            finaleAudio.clip = nineScraps[1];
-            finaleAudio.Play();
-            finaleAudioSubtitles.text.text = "YOU HAVE SOLVED ALL OF MY MATH PROBLEMS!";
-            yield return new WaitForSeconds(nineScraps[1].length);
-            finaleAudio.clip = nineScraps[2];
-            finaleAudio.Play();
-            finaleAudioSubtitles.text.text = "TRY, IF YOU CAN, IF YOU STILL CAN, TO...";
-            yield return new WaitForSeconds(nineScraps[2].length);
-            finaleAudio.clip = nineScraps[3];
-            finaleAudio.Play();
-            finaleAudioSubtitles.text.text = "<b>GET YOUR STUPID ASS OUT OF THIS STUPID SCHOOL! JUST... UGHHH! GOD!</b>";
         }
 
         private IEnumerator FinaleIntro()
