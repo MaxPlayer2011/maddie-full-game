@@ -16,6 +16,7 @@ public class PRI : MonoBehaviour
     private GameManager gm;
     private Subtitle dialogeSystem;
     private Subtitle dialogeSystemHum;
+    private AudioQueueManager audioQueue;
     private AudioSource audioSource;
     public AudioSource hum;
     private SpriteRenderer spriteRenderer;
@@ -29,6 +30,7 @@ public class PRI : MonoBehaviour
     public AudioClip noRunning;
     public AudioClip noEscaping;
     public AudioClip noBullying;
+    public AudioClip delay;
     public AudioClip humClip;
 
     void Start()
@@ -36,6 +38,7 @@ public class PRI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         dialogeSystem = GetComponent<Subtitle>();
         dialogeSystemHum = GetComponentInChildren<Subtitle>();
+        audioQueue = gameObject.AddComponent<AudioQueueManager>();
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -202,13 +205,15 @@ public class PRI : MonoBehaviour
 
     IEnumerator DetentionAudio()
     {
-        PlayAudio(detentionIntroClip, "You get detention for");
-        yield return new WaitForSeconds(detentionIntroClip.length + 0.25f);
-        PlayAudio(detentionTimerClip[detentionTime - 1], detentionTimerText[detentionTime - 1]);
-        yield return new WaitForSeconds(detentionTimerClip[detentionTime - 1].length + 0.25f);
         int random_warn = Random.Range(0, detentionWarnClip.Length);
-        PlayAudio(detentionWarnClip[random_warn], detentionWarnText[random_warn]);
-        yield return new WaitForSeconds(detentionWarnClip[random_warn].length);
+
+        audioSource.Stop();
+        audioQueue.Queue(detentionIntroClip, "You get detention for");
+        audioQueue.Queue(delay);
+        audioQueue.Queue(detentionTimerClip[detentionTime - 1], detentionTimerText[detentionTime - 1]);
+        audioQueue.Queue(delay);
+        audioQueue.Queue(detentionWarnClip[random_warn], detentionWarnText[random_warn]);
+        yield return new WaitForSeconds(detentionIntroClip.length + detentionTimerClip[detentionTime - 1].length + detentionWarnClip[random_warn].length);
         agent.isStopped = false;
     }
 }

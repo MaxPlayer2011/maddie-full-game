@@ -374,6 +374,7 @@ MonoBehaviour:
   noRunning: {fileID: 8300000, guid: 90185ef6eaba16a4c954e10e63bfeb80, type: 3}
   noEscaping: {fileID: 8300000, guid: 848737f3c3ae6401ba18473bbb5a5ab2, type: 3}
   noBullying: {fileID: 8300000, guid: f4cb2c78574c7488b91bb67b6fbdc06b, type: 3}
+  delay: {fileID: 8300000, guid: f0ca5273916e19348974cb80c5c169d1, type: 3}
   humClip: {fileID: 8300000, guid: 74aac45774fbb4044927a35b509a06b1, type: 3}
 --- !u!114 &4169032973732665331
 MonoBehaviour:
