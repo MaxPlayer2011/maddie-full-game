@@ -74,7 +74,7 @@ public class PRI : MonoBehaviour
             Wander();
         }
 
-        if (angry == true)
+        if (angry)
         {
             agent.SetDestination(gm.player.position);
         }
@@ -104,7 +104,7 @@ public class PRI : MonoBehaviour
         
         if (Physics.Raycast(transform.position + Vector3.up, direction, out hit, Mathf.Infinity, 3, QueryTriggerInteraction.Ignore) & hit.transform.tag == "Player" & !busy)
         {
-            if (gm.detention == false)
+            if (!gm.detention)
             {
                 if (Input.GetKey(KeyCode.LeftShift) & timeToGetAngry > 0f & !gm.playerScript.outside & gm.playerScript.stamina.value > 0f & gm.playerScript.currentSpeed == gm.playerScript.sprintSpeed)
                 {
@@ -124,7 +124,7 @@ public class PRI : MonoBehaviour
                     gm.playerScript.guilty = true;
                 }
 
-                if (gm.playerScript.guilty == true & angry == false)
+                if (gm.playerScript.guilty & !angry)
                 {
                     angry = true;
 
@@ -174,7 +174,7 @@ public class PRI : MonoBehaviour
 
     void Wander()
     {
-        if (angry == false)
+        if (!angry)
         {
             agent.SetDestination(gm.aiWanderPoints[Random.Range(0, gm.aiWanderPoints.Length)].position);
         }
