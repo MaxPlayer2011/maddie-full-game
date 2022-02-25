@@ -80,7 +80,7 @@ namespace GenericManagers
         public TextMeshProUGUI detentionText;
         public TextMeshProUGUI rapText;
         public Animator horrorBird_anim;
-        public MeshCollider secretWall;
+        public GameObject secretWall;
         public PauseManager pm;
         public Color scaryLight;
         public Color finalFogColor;
@@ -170,12 +170,12 @@ namespace GenericManagers
 
             if (scraps == 4)
             {
-                secretWall.enabled = false;
+                secretWall.SetActive(false);
             }
 
             else
             {
-                secretWall.enabled = true;
+                secretWall.SetActive(true);
             }
 
             if (gameOver)
