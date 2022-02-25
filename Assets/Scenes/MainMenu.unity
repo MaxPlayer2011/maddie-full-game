@@ -2524,7 +2524,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1836255149}
   m_HandleRect: {fileID: 1836255148}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -7855,7 +7855,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 308, y: 385.59}
+  m_SizeDelta: {x: 308, y: 771.95}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &995132046
 MonoBehaviour:
@@ -7882,16 +7882,31 @@ MonoBehaviour:
     <u>CHANGELOG</u>
 
 
-    -Made it so the camera would shake when there
-    is a student stampede active.
+    -Fix a bug where Principal and Friday Night
+    Yeah! float in the air in the tutorial.
 
-    -Fix the fire floating above the candle on
-    the cake.
+    -Improve a lot of code, and some
+    minor bug fixes.
 
-    -Add a person to the credits, which I forgot to do in the previous
-    version.
+    -Made it so when you give Principal a book and he''s speaking,
+    he will stop talking.
 
-    -Make the student sprites look better in the student stampede.'
+    -Made it so when the secret room would be accessible,
+    it would be visible.
+
+    -Fix a bug where the graphics get glitchy when inside
+    the secret room.
+
+    -Fix a bug where the student stampede spawns when the
+    school gets flooded.
+
+    -Made the flood event shorter.
+
+    -Add a new character,
+    Nurse.
+
+    -You will get hallucination after some time, and Nurse will help
+    you fix it.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e50ac66cfef6456448712925d9514ade, type: 2}
   m_sharedMaterial: {fileID: -9069644896615961332, guid: e50ac66cfef6456448712925d9514ade, type: 2}
@@ -10646,7 +10661,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1478151051}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.99328303
+  m_Size: 0.4961461
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -11403,7 +11418,7 @@ RectTransform:
   m_Father: {fileID: 1489975789}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.0067169666}
+  m_AnchorMin: {x: 0, y: 0.5038539}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
