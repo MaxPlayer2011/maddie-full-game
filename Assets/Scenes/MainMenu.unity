@@ -7905,8 +7905,8 @@ MonoBehaviour:
     -Add a new character,
     Nurse.
 
-    -You will get hallucination after some time, and Nurse will help
-    you fix it.'
+    -You will get hallucinations after some time, and Nurse will help
+    you fix them.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e50ac66cfef6456448712925d9514ade, type: 2}
   m_sharedMaterial: {fileID: -9069644896615961332, guid: e50ac66cfef6456448712925d9514ade, type: 2}
