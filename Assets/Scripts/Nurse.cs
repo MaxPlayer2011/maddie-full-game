@@ -6,6 +6,7 @@ public class Nurse : MonoBehaviour
 {
     public bool inOffice;
     public bool helping;
+    public bool patrolling;
     public string[] problemText;
     public string[] fixText;
     public string[] doneText;
@@ -29,7 +30,7 @@ public class Nurse : MonoBehaviour
     
     void Update()
     {
-        if (agent.remainingDistance < 1 & !helping)
+        if (agent.remainingDistance < 1 & !helping & !patrolling)
         {
             StartCoroutine(Wander());
         }
@@ -45,7 +46,19 @@ public class Nurse : MonoBehaviour
 
     IEnumerator Wander()
     {
-        yield return new WaitForSeconds(60f);
+        patrolling = true;
+
+        if (inOffice)
+        {
+            yield return new WaitForSeconds(60f);
+        }
+
+        else
+        {
+            yield return new WaitForSeconds(15f);
+        }
+
+        patrolling = false;
         agent.SetDestination(wanderPoints[Random.Range(0, wanderPoints.Length)].position);
     }
 
