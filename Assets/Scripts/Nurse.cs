@@ -9,7 +9,6 @@ public class Nurse : MonoBehaviour
     public string[] problemText;
     public string[] fixText;
     public string[] doneText;
-    private AudioSource audioSource;
     public AudioClip hello;
     public AudioClip[] problem;
     public AudioClip hallucination;
@@ -23,10 +22,9 @@ public class Nurse : MonoBehaviour
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
         audioQueue = gameObject.AddComponent<AudioQueueManager>();
-        Wander();
+        StartCoroutine(Wander());
     }
     
     void Update()
