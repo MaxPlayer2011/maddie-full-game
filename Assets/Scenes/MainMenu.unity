@@ -2524,7 +2524,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1836255149}
   m_HandleRect: {fileID: 1836255148}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -7855,7 +7855,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 308, y: 771.95}
+  m_SizeDelta: {x: 308, y: 302.79}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &995132046
 MonoBehaviour:
@@ -7882,31 +7882,13 @@ MonoBehaviour:
     <u>CHANGELOG</u>
 
 
-    -Fix a bug where Principal and Friday Night
-    Yeah! float in the air in the tutorial.
+    -Fix a bug where Principal gives you detention
+    for "escaping detention" if you enter Nurse''s office while punished.
 
-    -Improve a lot of code, and some
-    minor bug fixes.
+    -Improve
+    Nurse''s AI.
 
-    -Made it so when you give Principal a book and he''s speaking,
-    he will stop talking.
-
-    -Made it so when the secret room would be accessible,
-    it would be visible.
-
-    -Fix a bug where the graphics get glitchy when inside
-    the secret room.
-
-    -Fix a bug where the student stampede spawns when the
-    school gets flooded.
-
-    -Made the flood event shorter.
-
-    -Add a new character,
-    Nurse.
-
-    -You will get hallucinations after some time, and Nurse will help
-    you fix them.'
+    -Add furniture, posters, etc. to Nurse''s office.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e50ac66cfef6456448712925d9514ade, type: 2}
   m_sharedMaterial: {fileID: -9069644896615961332, guid: e50ac66cfef6456448712925d9514ade, type: 2}
@@ -10660,8 +10642,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1478151052}
   m_HandleRect: {fileID: 1478151051}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.4961461
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -11418,7 +11400,7 @@ RectTransform:
   m_Father: {fileID: 1489975789}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5038539}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
