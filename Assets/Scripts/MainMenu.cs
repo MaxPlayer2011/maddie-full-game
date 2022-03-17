@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -11,6 +12,7 @@ public class MainMenu : MonoBehaviour
     public TextMeshProUGUI tut;
     public TextMeshProUGUI langText;
     public Slider slider;
+    public Slider progressBar;
     public Toggle subtitleToggle;
     public TMP_Dropdown lang;
     public GameObject mainScreen;
@@ -162,7 +164,18 @@ public class MainMenu : MonoBehaviour
 
     public void Scene(string scene)
     {
-        SceneManager.LoadScene(scene);
+        StartCoroutine(ProgressBar(scene));
+    }
+
+    private IEnumerator ProgressBar(string scene)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(scene);
+
+        while (!operation.isDone)
+        {
+            progressBar.value = Mathf.Clamp01(operation.progress / 0.9f);
+            yield return null;
+        }
     }
 
     public void InputScene()
