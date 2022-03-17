@@ -13254,12 +13254,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Item info coming soon!
+  m_text: '<u>How to Use Items</u>
 
 
-    (Use "Left Click" or "E" to pick up items,
+    Use "Left Click" or "E" to pick up items,
     and use "Right Click" or "R" to use them. Use your mouse scrollwheel or the 1,
-    2, 3 buttons on your keyboard to change the selected item.)'
+    2, 3 buttons on your keyboard to change the selected item.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e50ac66cfef6456448712925d9514ade, type: 2}
   m_sharedMaterial: {fileID: -9069644896615961332, guid: e50ac66cfef6456448712925d9514ade, type: 2}

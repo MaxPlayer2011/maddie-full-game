@@ -64,6 +64,7 @@ namespace GenericManagers
         public AudioClip hgmTr4Explain1;
         public AudioClip hgmTr4Explain2;
         public AudioClip hgmTr4Explain3;
+        public AudioClip hgmTr4Explain4;
         public AudioClip hgmTr4Notice1;
         public AudioClip hgmTr4Praise1;
         public AudioClip hgmTr4guideToNext;
@@ -264,11 +265,12 @@ namespace GenericManagers
             hgmAudio4.Queue(hgmTr4Explain1, "Principal... the bald guy in the gray shirt... will give you detention if you break the rules.");
             hgmAudio4.Queue(hgmTr4Explain2, "Friday Night Yeah!... the creepy piece of paper... will force you to listen to his crappy music for 5 seconds.");
             hgmAudio4.Queue(hgmTr4Explain3, "Bully, the idiot behind you, will try to steal one of your items.");
+            hgmAudio4.Queue(hgmTr4Explain4, "Make sure to read the info about using items on that right wall.");
             hgmAudio4.Queue(hgmTr4Notice1, "Other characters coming soon!");
             hgmAudio4.Queue(hgmTr4Praise1, "Alright! You are ready to play the game!");
             hgmAudio4.Queue(hgmTr4guideToNext, "Please go to this green door to play the game.");
             hgmAudio4.Queue(hgmOutro1, "Bye! Good luck!");
-            yield return new WaitForSeconds(hgmTr4Intro1.length + hgmTr4Explain1.length + hgmTr4Explain2.length + hgmTr4Explain3.length + hgmTr4Notice1.length + hgmTr4Praise1.length + hgmTr4guideToNext.length + hgmOutro1.length);
+            yield return new WaitForSeconds(hgmTr4Intro1.length + hgmTr4Explain1.length + hgmTr4Explain2.length + hgmTr4Explain3.length + hgmTr4Explain4.length + hgmTr4Notice1.length + hgmTr4Praise1.length + hgmTr4guideToNext.length + hgmOutro1.length);
             trigger5.SetActive(true);
         }
     }
