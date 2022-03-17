@@ -432,6 +432,7 @@ GameObject:
   - component: {fileID: 1612522226795812003}
   - component: {fileID: 1612522226795812028}
   - component: {fileID: 1612522226795812029}
+  - component: {fileID: 7482874298321967277}
   m_Layer: 0
   m_Name: HelpGameObject
   m_TagString: Untagged
@@ -567,7 +568,18 @@ MonoBehaviour:
   multiplySubtitlePosition: 0
   subtitle: {fileID: 0}
   text: {fileID: 0}
-  hud: {fileID: 0}
+--- !u!114 &7482874298321967277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612522226795812002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6dacf32dda4a764a9b90fe0a04be05d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2538592737952488211
 GameObject:
   m_ObjectHideFlags: 0
