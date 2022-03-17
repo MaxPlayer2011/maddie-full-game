@@ -15,11 +15,12 @@ public class GM_Won : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         GameObject.FindGameObjectWithTag("ACH_Canvas").GetComponent<AchievementManager>().CreateAchievement("BeatGame");
+        timeToDie = Random.Range(10f, 15f);
     }
 
     void Update()
     {
-        if (jumpscare == true)
+        if (jumpscare)
         {
             timeToKickstart -= Time.deltaTime * 1f;
         }
@@ -34,15 +35,16 @@ public class GM_Won : MonoBehaviour
             jumpscare = true;
             player.SetActive(false);
             maddie.SetActive(true);
+
+            if (audioSource.volume == 0.5f)
+            {
+                audioSource.Stop();
+                audioSource.volume = 1f;
+            }
+
+            audioSource.PlayOneShot(deathClip);
         }
 
-        if (jumpscare == true)
-        {
-            audioSource.Stop();
-            audioSource.volume = 0.3f;
-            audioSource.PlayOneShot(deathClip, 7f);
-        }
-        
         if (timeToKickstart < 0f)
         {
             SceneManager.LoadScene("Won2");
