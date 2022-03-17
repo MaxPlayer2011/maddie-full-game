@@ -32,14 +32,14 @@ public class LevelManager : MonoBehaviour
     {
         if (floor <= PlayerPrefs.GetInt("currentFloor"))
         {
-            if (floor == 1)
+            switch (floor)
             {
-                SceneManager.LoadScene("MainLevel");
-            }
-
-            else if (floor == 2)
-            {
-                SceneManager.LoadScene("Floor2");
+                case 1:
+                    SceneManager.LoadScene("MainLevel");
+                    break;
+                case 2:
+                    SceneManager.LoadScene("Floor2");
+                    break;
             }
         }
 
