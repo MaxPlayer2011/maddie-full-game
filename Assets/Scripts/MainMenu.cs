@@ -17,6 +17,7 @@ public class MainMenu : MonoBehaviour
     public TMP_Dropdown lang;
     public GameObject mainScreen;
     public GameObject changelog;
+    public GameObject yay;
     public GameObject debug;
     public GameObject mainMenuFullScreen;
     public TextMeshProUGUI debugText;
@@ -64,6 +65,11 @@ public class MainMenu : MonoBehaviour
         if (PlayerPrefs.GetString("lastVersion") != Application.version)
         {
             changelog.SetActive(true);
+        }
+
+        if (PlayerPrefs.GetInt("yay") != 1)
+        {
+            yay.SetActive(true);
         }
 
         if (PlayerPrefs.GetInt("won") == 1)
@@ -200,6 +206,11 @@ public class MainMenu : MonoBehaviour
     public void ExitChangelog()
     {
         PlayerPrefs.SetString("lastVersion", Application.version);
+    }
+
+    public void ExitYay()
+    {
+        PlayerPrefs.SetInt("yay", 1);
     }
 
     public void ResetGame()
