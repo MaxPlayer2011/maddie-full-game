@@ -8130,7 +8130,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 308, y: 302.79}
+  m_SizeDelta: {x: 308, y: 385.59}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &995132046
 MonoBehaviour:
@@ -8157,13 +8157,22 @@ MonoBehaviour:
     <u>CHANGELOG</u>
 
 
-    -Fix a bug where Principal gives you detention
-    for "escaping detention" if you enter Nurse''s office while punished.
+    -Add more easter eggs.
 
-    -Improve
-    Nurse''s AI.
+    -Improve the
+    ending.
 
-    -Add furniture, posters, etc. to Nurse''s office.'
+    -Remove the Level Manager.
+
+    -Improve the loading menu.
+
+    -You
+    can no longer earn achievements in debug mode.
+
+    -Improve and add more to
+    the tutorial.
+
+    -Updated Unity version.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e50ac66cfef6456448712925d9514ade, type: 2}
   m_sharedMaterial: {fileID: -9069644896615961332, guid: e50ac66cfef6456448712925d9514ade, type: 2}
@@ -11089,8 +11098,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1478151052}
   m_HandleRect: {fileID: 1478151051}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.993283
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -11981,7 +11990,7 @@ RectTransform:
   m_Father: {fileID: 1489975789}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.0067170262}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
